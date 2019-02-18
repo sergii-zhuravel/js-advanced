@@ -1,1 +1,5 @@
-ECHO is on.
+Tartachnyi Yurii
+
+HTML: 80%
+CSS: 92%
+JA: 84%
