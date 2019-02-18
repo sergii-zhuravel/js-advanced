@@ -2,4 +2,4 @@ Tartachnyi Yurii
 
 HTML: 80%
 CSS: 92%
-JA: 84%
+JS: 84%
