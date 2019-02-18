@@ -1,0 +1,11 @@
+HTML - Result:
+26 of 40
+65%
+
+CSS - Result:
+17 of 25
+68%
+
+JS - Result:
+17 of 25
+68%
