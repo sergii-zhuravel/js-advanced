@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Первый урок</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+    <p>Задание: угадай число</p>
+    <input id="Ex1Input" type="text" value=0>
+    <button id="btnEx1">Попробуй угадать!</button>
+
+    <br>
+
+    <p>Задание 2: калькулятор</p>
+    <input id="Ex2Input1" type="text" value=0>
+    <input id="Ex2Input2" type="text" value="+">
+    <input id="Ex2Input3" type="text" value=0>
+    <button id="btnEx2">Посчитать</button>
+
+
+    <script>
+        //Ex 1
+        var RandNum = Math.floor(Math.random() * 10) + 1;
+        $('#btnEx1').click(function () {
+            var Ex1Input = $('#Ex1Input').val();
+            if (RandNum == Ex1Input)
+                answer = "Угадал";
+            else
+                answer = "Повезет в следующий раз. Было число " + RandNum;
+            alert(answer);
+        });
+
+        //Ex 2
+
+        var SignArr = ["+", "-", "*", "/"];
+
+        $('#btnEx2').click(function () {
+            var Ex2Input1 = $('#Ex2Input1').val();
+            var Ex2Sign = $('#Ex2Input2').val();
+            var Ex2Input3 = $('#Ex2Input3').val();
+
+            if (SignArr.indexOf(Ex2Sign) == -1)
+                answer = "Неправильный знак операции!";
+            else{
+                var Ex2Result;
+                eval("Ex2Result=" + Ex2Input1 + Ex2Sign + Ex2Input3);
+                answer = Ex2Input1 + " " + Ex2Sign + " " + Ex2Input3 + " = " + Ex2Result;
+            }
+
+            alert(answer);
+        });
+    </script>
+</body>
+
+</html>
