@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Калькулятор</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+  </head>
+
+  <body>
+    <div class="calculator">
+      <label>Operand 1 <input id="operand1"/></label>
+      <label>Operand 2 <input id="operand2"/></label>
+      <ul class="buttons-li">
+        <li><button onclick="plus()">+</button></li>
+        <li><button onclick="minus()">-</button></li>
+        <li><button onclick="multiply()">*</button></li>
+        <li><button onclick="divide()">/</button></li>
+      </ul>
+      <div class="result">
+        <h3>RESULT</h3>
+        <p id="result">0</p>
+      </div>
+    </div>
+
+    <script src="calc.js"></script>
+  </body>
+</html>
