@@ -1,0 +1,24 @@
+class Aircraft {
+    type = string;
+    maxHeight = integer;
+    maxSpeed = integer;
+    loadCapacity = integer;
+    takeOf() {};
+    landing() {};
+}
+
+class Plain extends Aircraft {
+    wingspan = integer; 
+}
+
+class PassengerPlane extends Plain {
+    maxPassengersNumber = integer;
+}
+
+class MilitaryFighter extends Plain {
+    amunitionQuantity = integer;
+}
+
+class Helicopter extends Aircraft {
+    numberOfScrews = integer;
+}
