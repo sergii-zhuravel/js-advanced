@@ -13,7 +13,7 @@ function CarWithAutomaticTransmission(maxSpeed) {
             this.currentSpeed = this.currentSpeed + increase;
             console.log('Acceleration. Current speed: ' + this.currentSpeed + ' km/h');
         } else {
-            this.currentSpeed = 200;
+            this.currentSpeed = maxSpeed;
             console.log('It\'s the max speed for this car. Current speed: ' + this.currentSpeed + ' km/h');
         }
     }
