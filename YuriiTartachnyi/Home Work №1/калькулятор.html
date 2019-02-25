@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Калькулятор</title>
+</head>
+<body>
+	<form>
+		<input class="first__number" type="number">
+		<select class="operation">
+			 <option>+</option>
+			 <option>-</option>
+			 <option>*</option>
+			 <option>/</option>
+		</select>
+		<input class="second__number" type="number">
+		<input type="button" value="=" onclick="myCalculate();">
+		<input id="result" placeholder="результат">
+	</form>
+<script>
+	function myCalculate(){
+		var firstNumber   = el(".first__number"), 
+			secondNumber  = el(".second__number"), 
+			mathOperation = el(".operation"); 
+		result.value = eval(firstNumber + mathOperation + secondNumber);
+	}
+	function el(h){
+		return document.querySelector(h).value;
+	}
+</script>
+</body>
+</html>
