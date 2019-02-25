@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		ul{
+			list-style: none;
+		}
+		li{
+			display: inline-block;
+			padding: 10px;
+			border: 1px solid black;
+			margin-left: 15px;
+			background: lightgrey;
+			cursor: pointer;
+
+		}
+		div{
+			text-align: center;
+		}
+		#result{
+			width: 20%;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" name="" id="oper1">
+	<div id="sign" style="display: inline-block; width: 50px;"></div>
+	<input type="text" name="" id="oper2">
+	<ul>
+		<li>+</li>
+		<li>-</li>
+		<li>/</li>
+		<li>*</li>
+		<li id="calc">=</li>
+	</ul>
+	<div id="result"></div>
+	<script type="text/javascript">
+		var li = document.getElementsByTagName("li");
+		var sign = document.getElementById("sign");
+		var result = document.getElementById("result");
+		var oper1 = document.getElementById("oper1");
+		var oper2 = document.getElementById("oper2");
+		oper1.oninput = function(){
+			if(isNaN(oper1.value))
+				oper1.value = ''
+			}
+		oper2.oninput = function(){
+			if(isNaN(oper2.value))
+				oper2.value = ''
+		}
+
+		for(i=0;i<li.length-1;i++){
+			li[i].onclick = function(){
+				sign.innerHTML=this.innerHTML;
+			} 
+		}
+		var calc = document.getElementById("calc");
+		function sum(a,b){
+			return a+b;
+
+		}
+		function sub(a,b){
+			return a-b;
+		}
+		function mult(a,b){
+			return a*b;
+		}
+		function div(a,b){
+			return a/b;
+		}
+
+		calc.onclick=function(){
+			if (sign.innerHTML=="+") {
+				result.innerHTML = sum(+oper1.value,+oper2.value);
+			}
+			if (sign.innerHTML=="-") {
+				result.innerHTML = sub(+oper1.value,+oper2.value);
+			}
+			if (sign.innerHTML=="*") {
+				result.innerHTML = mult(+oper1.value,+oper2.value);
+			}
+			if (sign.innerHTML=="/") {
+				result.innerHTML = div(+oper1.value,+oper2.value);
+			}
+			oper1.value ="";
+			oper2.value ="";
+			sign.innerHTML ="";
+		} 
+		
+
+
+	</script>
+</body>
+</html>
