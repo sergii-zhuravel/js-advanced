@@ -9,7 +9,7 @@ function runMyApp() {
 }
 
 function askNextCommandWithDelay() {
-  setTimeout(chooseCom, 20);
+  setTimeout(chooseCom, 30);
 }
 
 function welcomeMes() {
@@ -36,7 +36,16 @@ function chooseCom() {
       break;
     case "0":
       finishWork();
+      break;
+    default:
+    tryCh();
+    break;
   }
+}
+
+function tryCh() {
+  alert(`Incorrect command, try again :(`);
+  askNextCommandWithDelay();
 }
 
 function addNewTask() {
