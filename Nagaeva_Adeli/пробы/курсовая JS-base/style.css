@@ -1,0 +1,15 @@
+* {
+    color: #00bbff;
+    font-family: 'Montserrat', sans-serif;
+}
+* {
+    background: url(https://i.pinimg.com/originals/8b/3a/37/8b3a371457ff315b5b43298c594cd127.jpg);
+    background-size: 100%;
+}
+
+#eM {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+}
