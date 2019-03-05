@@ -85,6 +85,15 @@
 	}
 	var mountBike = new BikeSecond();
 	mountBike.makeSecond = 'mount';
-	mountBike.driveSecond();	
+	mountBike.driveSecond();
+
+	function CarSecond (maxspeed, consuption){
+		this.maxspeed   = maxspeed;
+		this.consuption = consuption;
+	}	
+	CarSecond.prototype = new VehicleSecond();
+	var myNewCar = new CarSecond();
+		myNewCar.makeSecond = 'Lamborgini';
+		myNewCar.driveSecond();
  </script> 
 </html>
