@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>Home Work</title>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+	/* ############################################### Task 1 ###########################################*/	
+	function Pizza(toping, bortik, size) {
+		var p = this;
+		
+		p.toping 	= toping;
+		p.bortik 	= bortik;
+		p.size 		= size;
+		
+		p.zakaz		= function (){
+			return p.size + ' Pizza with ' + p.bortik + ' and with toppings: ' + p.toping.join(', ') + '.';
+			}
+		p.finish    = function (){
+			return 'Pizza packed into ' + p.size + ' box';
+			}		
+		}
+		
+
+		var paperoni = new Pizza (['catchup', 'double cheese', 'salad'], true, 'Big');
+			console.log(paperoni.zakaz());
+			console.log(paperoni.finish());
+
+		var country = new Pizza (['mayo', 'cucumber', 'becon'], false, 'Medium')	
+			console.log(country.zakaz());
+			console.log(country.finish());
+		/*############################################### Task 2 #########################################*/
+		function sum() { // суммирует аргументы: sum(1,2,3) = 6
+  			return [].reduce.call(arguments, function(a, b) {
+    			return a + b;
+ 			 });
+		}
+
+		function mul() { // перемножает аргументы: mul(2,3,4) = 24
+  			return [].reduce.call(arguments, function(a, b) {
+    			return a * b;
+ 		 	});
+		}
+
+		function applyAll(someFunc){
+			return someFunc.apply(this, [].slice.call(arguments, 1));
+		}
+
+		console.log( applyAll(sum, 1, 2, 3) ); // -> sum(1, 2, 3) = 6
+		console.log( applyAll(mul, 2, 3, 4) ); // -> mul(2, 3, 4) = 24
+		/*############################################### Task 3 ############################################*/
+		var arr = [2, -5, 7];
+		console.log(Math.max.apply(null, arr));
+
+
+		var palitra = {
+			fruitColor : function(){
+				console.log(this.fruit + ' - ' + this.color);
+			}
+		}
+
+		var catalogs = {
+			fruit : 'apple',
+			color : 'green',
+		}
+
+		palitra.fruitColor.call(catalogs);
+
+		function someThing (){
+			console.log(this.informations);
+		};
+		someThing = someThing.bind({informations: 'sicret'});
+		someThing = someThing.bind({informations: 'no sicret'});
+		someThing();	
+	</script>
+
+</html>	
