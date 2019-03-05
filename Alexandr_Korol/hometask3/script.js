@@ -11,7 +11,7 @@ function Pizza(){
       this.packPizza = function(){
           console.log('Pizza packed into '+ this.size + ' box');
       };
-}
+};
 var obj = new Pizza();
 obj.toppings = prompt('Enter the toppings');
 obj.size = prompt('Enter the size of the pizza');
