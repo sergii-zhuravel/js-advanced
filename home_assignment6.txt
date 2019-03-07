@@ -1,5 +1,5 @@
 ------------------------
-Задача 7.1
+Задача 6.1
 ------------------------
 Дано:
 HTML страница в которой есть только такой код
@@ -22,7 +22,7 @@ HTML страница в которой есть только такой код
 
 
 ------------------------
-Задача 7.2
+Задача 6.2
 ------------------------
 Дано:
 HTML страница в которой есть только такой код
@@ -36,7 +36,7 @@ function myFunction(){
     var txt;
     cssObj = window.getComputedStyle(elem)
 
-    for (i = 0; i < cssObj.length; i++) { 
+    for (i = 0; i < cssObj.length; i++) {
         cssObjProp = cssObj.item(i)
         txt += cssObjProp + " = " + cssObj.getPropertyValue(cssObjProp) + "<br>";
     }
