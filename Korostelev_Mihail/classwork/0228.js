@@ -37,7 +37,7 @@ function num(n){
     }
     return sum
 }
-console.log(num(6))
+console.log(num(5));
 
 //рекурсия
 function numRecursia(n){
