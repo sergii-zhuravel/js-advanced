@@ -1,5 +1,5 @@
 class Sensor {
-  initSensor() {
+  constructor() {
     this.macAddress = "71 2D 00 13 A2 00 41 80 D8 62";
   }
 
@@ -21,7 +21,8 @@ class Sensor {
 }
 
 class TemperatureSensor extends Sensor {
-  initTemperature() {
+  constructor() {
+    super();
     this.type = "Temperature";
     this.values = {
       value: 22.8,
@@ -36,13 +37,13 @@ class TemperatureSensor extends Sensor {
 }
 
 var temp = new TemperatureSensor();
-temp.initTemperature();
 console.log(temp.startMeasurement());
 console.log(temp.getValue());
 console.log(temp.stopMeasurement());
 
 class HumiditySensor extends TemperatureSensor {
-  initHumidity() {
+  constructor() {
+    super();
     this.type = "Humidity";
     this.values = {
       value: "36",
@@ -56,8 +57,8 @@ class HumiditySensor extends TemperatureSensor {
 }
 
 var hum = new HumiditySensor();
-hum.initHumidity();
 console.log(hum.startMeasurement());
 console.log(hum.getValue());
 console.log(hum.stopMeasurement());
 console.log(hum.endMeasurment());
+
