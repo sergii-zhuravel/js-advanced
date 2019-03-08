@@ -1,0 +1,1 @@
+document.body.firstElementChild.lastElementChild.textContent = navigator.appVersion;
