@@ -1,7 +1,7 @@
-/*var SimpleCalculator = {
-    read: function(){
-    this.numberFirst = 3//+prompt("Enter first number");
-    this.numberSecond = 4//+prompt("Enter first number");
+var SimpleCalculator = {
+    read: function(a,b){
+    this.numberFirst = a//+prompt("Enter first number");
+    this.numberSecond = b//+prompt("Enter first number");
 },
     sum: function(){
         return this.numberFirst + this.numberSecond;
@@ -10,7 +10,7 @@
         return this.numberFirst - this.numberSecond;
     }
 }
-console.log(SimpleCalculator.read());
+console.log(SimpleCalculator.read(3,4));
 console.log(SimpleCalculator.sum());
 
 var AdvancedCalculator = {
@@ -21,11 +21,11 @@ var AdvancedCalculator = {
         return this.numberFirst * this.numberSecond;
     }
 }
-SimpleCalculator.__proto__ = AdvancedCalculator;
-console.log(SimpleCalculator.div());
-*/
+AdvancedCalculator.__proto__ = SimpleCalculator;
+console.log(AdvancedCalculator.div());
 
-function SimpleCalculator () {
+
+/* function SimpleCalculator () {
     this.numberFirst = 0;
     this.numberSecond = 0;
 };
@@ -87,4 +87,4 @@ class SimpleCalculator1 extends AdvancedCalculator1{
 }
 var calc = new SimpleCalculator1(5, 7);
 calc.read();
-console.log(calc.sum());
+console.log(calc.sum()); */
