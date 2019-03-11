@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="menu">
+        <a href="javascript:void(0);"><button onclick="event.target.innerHTML = 'Hello ITEA';" data-action="save" class="btn btn-md btn-warning">Сохранить</button></a>
+        <button data-action="load" class="btn btn-md btn-info">Загрузить</button>
+        <button data-action="search" class="btn btn-md btn-primary">Поиск</button>
+    </div>
+    <div class="container">
+        <div class="jumbotron" id="display">
+
+        </div>
+    </div>
+<script src="app.js">
+
+</script>
+</body>
+</html>

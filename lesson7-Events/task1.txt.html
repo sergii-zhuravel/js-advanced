@@ -1,0 +1,28 @@
+<div id="menu">
+  <button data-action="save">Сохранить</button>
+  <button data-action="load">Загрузить</button>
+  <button data-action="search">Поиск</button>
+</div>
+
+<script>
+  function Menu(elem) {
+    this.save = function() {
+      console.log( 'сохраняю' );
+    };
+    this.load = function() {
+      console.log( 'загружаю' );
+    };
+    this.search = function() {
+      console.log( 'ищу' );
+    };
+
+    var self = this;
+
+    elem.onclick = function(e) {
+      // get action from target and run it
+      
+    };
+  }
+
+  new Menu(menu);
+</script>
