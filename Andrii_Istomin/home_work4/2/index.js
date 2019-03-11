@@ -14,18 +14,29 @@ class Animal {
   }
 }
 
-class Hamster {
-  constructor(name) {
-    this.name = name;
-    this.speed = 0;
-  }
+class Rodent {
   jump() {
     this.speed++;
     alert(this.name + " прыгает со скоростю " + this.speed);
   }
 }
 
-Hamster.prototype = Object.create(Animal.prototype);
+class Hamster {
+  constructor(name) {
+    this.name = name;
+    this.speed = 0;
+  }
+  eat() {
+    this.speed++;
+    alert(this.name + " ест " + this.speed);
+  }
+}
+
+
+Rodent.prototype = Object.create(Animal.prototype);
+Rodent.prototype.constructor = Rodent;
+
+Hamster.prototype = Object.create(Hamster.prototype);
 Hamster.prototype.constructor = Hamster;
 
 //function extends
@@ -45,15 +56,22 @@ Animal.prototype.run = function(speed) {
   alert(this.name + " бежит со скоростью " + this.speed);
 };
 
-function Hamster(name) {
+function Rodent(name) {
   this.name = name;
   this.speed = 0;
 }
 
-Hamster.prototype = Object.create(Animal.prototype);
-Hamster.prototype.constructor = Hamster;
+Rodent.prototype = Object.create(Animal.prototype);
+Rodent.prototype.constructor = Rodent;
 
-Hamster.prototype.jump = function() {
+Rodent.prototype.jump = function() {
   this.speed++;
   alert(this.name + " прыгает со скоростю " + this.speed);
 };
+
+function Hamster(name){
+  this.name = name;
+}
+
+Hamster.prototype = Object.create(Rodent.prototype);
+Hamster.prototype.constructor = Hamster;
