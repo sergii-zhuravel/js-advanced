@@ -1,0 +1,30 @@
+------------------------
+Задача 8.1
+------------------------
+Есть JavaScript код
+<script>
+  document.addEventListener("DOMContentLoaded", myFunction());
+  function myFunction() {
+    console.log('Hello from My Function');
+  }
+  console.log('Hello from main JS code');
+</script>
+
+Вопрос:
+1. В каком порядке выведется текст?
+2. Есть ли в коде ошибки?
+
+
+------------------------
+Задача 8.2
+------------------------
+Дано:
+HTML страница home_assignment.html в которой есть JavaScript код
+
+Необходимо выполнить задания которые описаны в коде в виде комментариев, а именно:
+1. Дописать функцию addItem
+2. Написать реализацию функции removeItem
+3. Выполнить весь код при событии DOMContentLoaded
+
+
+Вопрос: Почему функция addItem которая клонирует существующие элемент li работает даже если удалить все ToDo элементы?
