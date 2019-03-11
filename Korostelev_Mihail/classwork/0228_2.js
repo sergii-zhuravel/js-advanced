@@ -21,8 +21,8 @@ var AdvancedCalculator = {
         return this.numberFirst * this.numberSecond;
     }
 }
-AdvancedCalculator.__proto__ = SimpleCalculator;
-console.log(AdvancedCalculator.div());
+SimpleCalculator.__proto__ = AdvancedCalculator;
+console.log(SimpleCalculator.div());
 
 
 /* function SimpleCalculator () {
@@ -57,7 +57,7 @@ function AdvancedCalculator () {
 
 AdvancedCalculator.prototype = SimpleCalculator.prototype;
 var adv = new AdvancedCalculator();
-console.log(adv.sum());
+console.log(adv.sum());*/
 
 class AdvancedCalculator1{
     constructor(n1, n2){
@@ -87,4 +87,4 @@ class SimpleCalculator1 extends AdvancedCalculator1{
 }
 var calc = new SimpleCalculator1(5, 7);
 calc.read();
-console.log(calc.sum()); */
+console.log(calc.div());
