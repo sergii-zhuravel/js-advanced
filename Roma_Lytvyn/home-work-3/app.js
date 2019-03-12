@@ -2,7 +2,7 @@
 
 // task 3.1 "Pizza time"!
 
-function CreatePizza(pizzaRim = false, size = 'big', toppings) {
+function CreatePizza(pizzaRim = false, size = 'big', toppings) { 
     this.toppings = toppings || ['tomato', 'cheese', 'pepperoni'];
     this.pizzaRim = pizzaRim;
     this.size = size;

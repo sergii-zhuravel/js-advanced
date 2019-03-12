@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Home task 5.1</title>
+    </head>
+    <body>
+        
+        <div>
+            <span>Browser name: </span><span>BROWSERNAME</span>
+        </div>
+        
+        <script>
+            // 5.1
+            var printBrowserInfo = document.body.children[0].lastElementChild;
+            // Or:
+            // var printBrowserInfo = document.lastChild.children[1].firstElementChild.lastElementChild;        
+            var browserName = window.navigator.appName;
+            printBrowserInfo.textContent = browserName;
+
+            // 5.2
+            // Get style attribute
+            var styleAttribute = document.body.lastElementChild.style;
+
+            // Check for child elements
+            var elemChild = document.body;
+            var result = false;
+            if (elemChild.firstElementChild) {
+                result = true;
+            }
+            
+            console.log(result);
+        </script>
+    </body>
+</html>
