@@ -3,10 +3,12 @@ function getValue() {
     return 'Value: ' + value;
 }
 console.log(getValue());
+
 function cloneElement() {
     var ol = document.getElementById('todo-list');
-    var clone = ol.firstChild.cloneNode(true);
-    clone.firstChild.textContent = 'Oleg';
-    clone.appendChild(ol);
+    var li = document.querySelector('.todo-item');
+    var cloneLi = li.cloneNode(true);
+    cloneLi.firstChild.textContent = 'Two todo ';
+    ol.appendChild(cloneLi);
 }
 cloneElement();
