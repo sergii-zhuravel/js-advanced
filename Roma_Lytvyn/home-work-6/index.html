@@ -1,0 +1,102 @@
+<html>
+<head>
+    <title>Home work 6</title>
+</head>
+<body>
+    
+    <!-- 6.1 -->
+    <div>
+        <input id="todo-input" value="Placeholder" /> 
+        <button id="button-add">Add</button>
+        <p>ToDo List:</p>
+        <ol id="todo-list">
+            <li class="todo-item">
+                First todo
+                <span class="delete-button" onclick="removeItem(event)" title="Delete current item">x</span>
+            </li>
+        </ol>
+    </div>
+
+
+    <script>
+    
+        var inputToDo = document.getElementById('todo-input');
+        var button = document.getElementById('button-add');
+        var list = document.getElementById('todo-list');
+
+        button.addEventListener('click', function() {
+            
+            var toDoText = inputToDo.getAttribute('value');
+            var newListItem = list.firstElementChild.cloneNode(true);
+
+            newListItem.textContent = toDoText;
+            list.appendChild(newListItem);
+        })
+        
+        function removeItem(event) {
+            var currentItem = event.target.parentElement;
+            console.log(currentItem);
+            currentItem.remove();
+        }
+        
+    </script>
+
+    
+    <!-- 6.2 -->
+    <div id="test" style="height: 50px;background-color: lightblue;">Test Div</div>
+    <p>Расчетные стили для test div: <br><span id="output"></span></p>
+
+    <script>
+        function myFunction(){
+            var elem = document.getElementById("test");
+            var txt = '';
+            cssObj = window.getComputedStyle(elem)
+            
+            for (i = 0; i < cssObj.length; i++) {
+                cssObjProp = cssObj.item(i);
+                if(cssObjProp === 'background-color') {
+                    txt += cssObjProp + " = " + cssObj.getPropertyValue(cssObjProp) + "<br>";
+                }
+                
+            }
+            document.getElementById("output").innerHTML = txt;
+        }
+        myFunction();
+    </script>
+    
+    <!-- 6.3 -->
+    <div id="testDiv"></div>
+    <script>
+    
+        var testDiv = document.getElementById('testDiv');
+
+        class UIComponent {
+            constructor(tag) {
+                this.tag = document.createElement(tag);
+            }
+
+            setAttribute(name, value) {
+                this.tag.setAttribute(name, value);
+            }
+            setContent(content) {
+                this.tag.textContent = content;
+            }
+            render(parent) {
+                parent.appendChild(this.tag);
+            }
+        }
+
+        class Button extends UIComponent {
+            clickMe() {
+               console.log("I'm clicked");
+            }
+        }
+        
+        var UIComponent1 = new Button('button');
+        UIComponent1.setAttribute('style', 'background-color: #2e3ccb; border: none; color: #fff; padding: 10px 20px; cursor: pointer;');
+        UIComponent1.setContent('New button!');
+        UIComponent1.render(testDiv);
+        
+    </script>
+</body>
+</html>
