@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<input id="inp" type="text" name="" maxlength="2" oninput="getValue()">
+	<button id="btn">Играть</button>
+	<div id="result"></div>
+	
+<script type="text/javascript">
+
+
+		var user = document.getElementById('inp');
+
+		function getValue(){
+			if(isNaN(user.value)){
+				alert('Ошибка');
+				inp.value = ''
+			}
+			else if (user.value > 10 || user.value < 1){
+				alert('Ошибка');
+				inp.value = ''
+			}
+
+		}
+
+		var btn = document.getElementById('btn');
+		var result = document.getElementById('result');
+		btn.onclick = function(){
+		var computer = Math.round(Math.random()*10);
+			if(computer==0){
+				computer +=1;
+			}
+			if(computer == user.value){
+				result.innerHTML = `Угадал. Выбор компьютера ${computer} Ваш выбор ${user.value}`
+			}
+			else if(computer != user.value){
+				result.innerHTML = `Повезет в следующий раз. Выбор компьютера ${computer} Ваш выбор ${user.value}`
+			}
+			inp.value = '';
+		}
+
+
+
+	</script>
+	
+
+</body>
+</html>

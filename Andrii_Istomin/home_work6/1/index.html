@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div>
+      <input id="todo-input" value="Placeholder" />
+      <button id="button-add">Add</button>
+      <p>ToDo List:</p>
+      <ol id="todo-list">
+        <li class="todo-item">
+          First todo
+          <span
+            class="delete-button"
+            onclick="removeItem(event)"
+            title="Delete current item"
+            >x</span
+          >
+        </li>
+      </ol>
+    </div>
+  </body>
+  <script>
+    let todo = document.getElementById("todo-input").value;
+    console.log(todo);
+    let li = document.getElementsByTagName("li");
+    console.log(li[0]);
+    let liElem = li[0];
+    console.log(liElem);
+    let liClone = liElem.cloneNode(true);
+    console.log(liClone);
+    liClone.innerText = "hello";
+
+    //console.log(jsonCopy(li[0]));
+  </script>
+</html>

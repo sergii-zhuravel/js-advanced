@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Work №6 task 2</title>
+</head>
+<body>
+	<div id="test" style="height: 50px;background-color: lightblue;">Test Div</div>
+	<p>Расчетные стили для test div: <br><span id="output"></span></p>
+</body>
+<script>
+	function myFunction(){
+    	var elem = document.getElementById("test");
+    	var txt;
+    	cssObj = window.getComputedStyle(elem)
+
+    	for (i = 0; i < cssObj.length; i++) {
+        	cssObjProp = cssObj.item(i)
+        	txt += cssObjProp + " = " + cssObj.getPropertyValue(cssObjProp) + "<br>";
+    	}
+    	document.getElementById("output").innerHTML = txt;
+	}
+	var backStyle = document.querySelector('#test'),
+		backStyle = backStyle.style.backgroundColor;
+	console.log(backStyle)	
+</script>
+</html>

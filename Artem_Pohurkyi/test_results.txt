@@ -1,0 +1,32 @@
+----HTML
+
+Result:
+25 of 40
+62%
+
+Almost! Study a little more and take the test again!
+
+Time Spent
+12:33
+
+----CSS
+
+Result:
+16 of 25
+64%
+
+Almost! Study a little more and take the test again!
+
+Time Spent
+6:47
+
+----JS
+
+Result:
+20 of 25
+80%
+
+Almost! Study a little more and take the test again!
+
+Time Spent
+5:55

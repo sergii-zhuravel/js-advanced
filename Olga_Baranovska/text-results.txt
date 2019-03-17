@@ -1,0 +1,3 @@
+HTML 87%
+CSS 96%
+JavaScript 92%

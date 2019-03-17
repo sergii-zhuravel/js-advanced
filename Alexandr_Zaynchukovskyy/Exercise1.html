@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Первый урок</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+    <p>Задание: угадай число</p>
+    <input id="Ex1Input" type="text" value=0>
+    <button id="btnEx1">Попробуй угадать!</button>
+
+    <br>
+
+    <p>Задание 2: калькулятор</p>
+    <input id="Ex2Input1" type="text" value=0>
+    <input id="Ex2Input2" type="text" value="+">
+    <input id="Ex2Input3" type="text" value=0>
+    <button id="btnEx2">Посчитать</button>
+
+    <br>
+
+    <p>Задание 3: Полином</p>
+    <input id="Ex3Input1" type="text" value="топот">
+    <button id="btnEx3">Проверить</button>
+
+
+    <script>
+        //Ex 1
+        $('#btnEx1').click(function () {
+            var RandNum = Math.floor(Math.random() * 10) + 1;
+            var Ex1Input = $('#Ex1Input').val();
+            if (RandNum == Ex1Input)
+                answer = "Угадал";
+            else
+                answer = "Повезет в следующий раз. Было число " + RandNum;
+            alert(answer);
+        });
+
+        //Ex 2
+
+        var SignArr = ["+", "-", "*", "/"];
+
+        $('#btnEx2').click(function () {
+            var Ex2Input1 = $('#Ex2Input1').val();
+            var Ex2Sign = $('#Ex2Input2').val();
+            var Ex2Input3 = $('#Ex2Input3').val();
+            
+            //Строгая проверка данных так как расчитывается в небезопасной eval
+            if (SignArr.indexOf(Ex2Sign) == -1)
+                answer = "Неправильный знак операции!";
+            else if (isNotNumeric(Ex2Input1) || isNotNumeric(Ex2Input3)) {
+                answer = "Значения должны быть числовыми!";
+            }
+            else {
+                var Ex2Result;
+                eval("Ex2Result=" + Ex2Input1 + Ex2Sign + Ex2Input3);
+                answer = Ex2Input1 + " " + Ex2Sign + " " + Ex2Input3 + " = " + Ex2Result;
+            }
+
+            alert(answer);
+        });
+
+        //Ex 3 Палиндром - без учета пробелов и заглавных и строчных
+
+        var SignArr = ["+", "-", "*", "/"];
+
+        $('#btnEx3').click(function () {
+            var Ex3Input1 = $('#Ex3Input1').val();
+            //уберем пробелы и приведем к строчным
+            Ex3Input1 = Ex3Input1.toLowerCase().replace(/\s/g, "");
+            strReverse = Ex3Input1.split('').reverse().join('');
+
+            if (Ex3Input1 == strReverse)
+                answer = "Это палиндром!";
+            else
+                answer = "Это не палиндром!";
+
+            alert(answer);
+        });
+
+        function isNotNumeric(n) {
+            return !(!isNaN(parseFloat(n)) && isFinite(n));
+        }
+    </script>
+</body>
+
+</html>
