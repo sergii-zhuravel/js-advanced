@@ -7,7 +7,15 @@ function showPictureInformation(httpRequest) {
         if (httpRequest.status == 200) {
             var responseData = JSON.parse(httpRequest.responseText);
             console.log(responseData);
-            // ....
+            var img = document.getElementById('image-container');
+            var title = document.getElementById('title');
+            var desc = document.getElementById('desc');
+            img.setAttribute('src', responseData.url);
+            img.onclick = function() {
+                img.setAttribute('src', responseData.hdurl);
+            }
+            title.innerHTML = responseData.title;
+            desc.innerHTML = responseData.explanation;
         } else if (httpRequest.status == 404) {
             console.log("For O For");
         }
