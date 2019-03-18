@@ -1,10 +1,11 @@
+// работает правильно, есть рекомендации
 function CarWithAutomaticTransmission(wheels, color, speed) {
   this.wheels = wheels || 4;
   this.color = color || "white";
   this.engineOn = false;
   this.speed = speed || 0; //  km/h
-  this.Transmission = function() {
-    if ((speed > 0 && speed < 20) || speed == 20) {
+  this.Transmission = function() { // методы лучше называть camelCase и как действие, например changeTransmission или switchTransmission
+    if ((speed > 0 && speed < 20) || speed == 20) { // можно (speed > 0 && speed <= 20)
       this.transmission = 1;
     };
     if ((speed > 20 && speed < 50) || speed == 50) {

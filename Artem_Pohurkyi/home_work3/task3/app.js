@@ -1,3 +1,4 @@
+// работает правильно
 var person = {
     name: 'Artem',
     lastName: 'Pohurskyi',

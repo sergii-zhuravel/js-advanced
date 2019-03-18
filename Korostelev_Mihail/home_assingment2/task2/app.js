@@ -8,6 +8,8 @@
 Создать несколько реализаций обьектов с помощью конструктора CarWithAutomaticTransmission*/
 
 // скопировать реализацию конструктора CarWithManulTransmission
+
+// автоматическая коробка не переключает передачи
 function CarWithManulTransmission(wheels, color) {
   this.wheels = wheels || 4;
   this.color = color || "white";

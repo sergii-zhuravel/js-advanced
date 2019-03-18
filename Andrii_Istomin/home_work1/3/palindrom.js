@@ -1,3 +1,4 @@
+// рабоает правильно не вовсех случаях
 function isPalindrom(str) {
   var originalString = str;
   var splittedString = str.split("");
@@ -12,3 +13,4 @@ function isPalindrom(str) {
   console.log(joinedArray);
 }
 isPalindrom("топот");
+// isPalindrom("nurses run") не правильно, нужно убрать пробелы

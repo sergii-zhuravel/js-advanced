@@ -1,3 +1,4 @@
+// правильно
 function makeAdder(n){
     return function (b){
         return n + b;

@@ -1,3 +1,4 @@
+// не правильно, нет иерархии
 var Base = {
      basevariable: 1,
      forpublic: 500,

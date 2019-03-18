@@ -1,3 +1,4 @@
+// правильно
 function applyAll(func, ...args) {
   return func(...args);
 }

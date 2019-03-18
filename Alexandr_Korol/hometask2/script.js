@@ -1,3 +1,5 @@
+// автоматическая коробка не переключает передачи
+
 function CarWithManulTransmission (wheels, color){
     this.wheels = wheels || 4;
     this.color = color || 'white';

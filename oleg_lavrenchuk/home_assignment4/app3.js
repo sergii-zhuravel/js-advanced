@@ -1,3 +1,5 @@
+// правильно
+
 class Animal {
   constructor() {
     this.name = "jivotnoe";

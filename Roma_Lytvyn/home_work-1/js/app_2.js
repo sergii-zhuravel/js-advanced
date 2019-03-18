@@ -1,4 +1,5 @@
-
+// работает правильно, сделано очень хорошо, но type="submit" можно убрать, в нём нет необходимости
+// и тогда можно убрать e.preventDefault();
 var calculateBtn = document.getElementById('calculate');
 
 calculateBtn.addEventListener('click', function(e) {

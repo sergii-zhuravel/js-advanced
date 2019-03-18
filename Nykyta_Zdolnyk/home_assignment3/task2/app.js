@@ -1,3 +1,5 @@
+// всё правильно
+
 function applyAll(someFunc) {
   var args = Array.prototype.slice.call(arguments, 1);
   console.log(args);

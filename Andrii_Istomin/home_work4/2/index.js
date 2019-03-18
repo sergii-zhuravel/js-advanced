@@ -1,3 +1,4 @@
+// нет иерархии наследования
 //class extends
 class Animal {
   constructor(name) {

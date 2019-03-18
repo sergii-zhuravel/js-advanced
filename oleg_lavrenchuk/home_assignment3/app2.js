@@ -1,3 +1,5 @@
+// всё правильно
+
 function applyAll() {
   var mass = [];
   for (key in arguments) {

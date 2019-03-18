@@ -1,3 +1,4 @@
+// не учтены пробелы
 var string = prompt('Enter your palindrome: ', '');
 
 function checkForPalindrome(string) {

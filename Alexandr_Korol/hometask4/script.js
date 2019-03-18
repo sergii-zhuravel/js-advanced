@@ -1,3 +1,4 @@
+// неправильно
 //Функція для 4.1
 function makeAdder(n){
     var variable = 15;

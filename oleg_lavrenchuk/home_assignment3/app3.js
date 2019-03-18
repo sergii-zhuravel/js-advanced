@@ -1,3 +1,5 @@
+// всё правильно
+
 function hello(argName, argSurname) {
     console.log('Hello ' + this[argName] + ' ' + this[argSurname]);
 }

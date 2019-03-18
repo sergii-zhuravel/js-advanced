@@ -1,4 +1,5 @@
-﻿function CarWithAutomaticTransmission (wheels, color){
+﻿// автоматическая коробка не переключает передачи
+function CarWithAutomaticTransmission (wheels, color){
   this.wheels = wheels || 4;
   this.color = color || 'white';
   this.engineOn = false;

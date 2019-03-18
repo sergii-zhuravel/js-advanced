@@ -1,3 +1,5 @@
+// всё правильно
+
 // Home work 3
 
 // task 3.1 "Pizza time"!
@@ -78,7 +80,7 @@ function addNewCountry(country) {
 var turistAVisitedCountry = addNewCountry.apply(turistA, [' Ukraine']);
 console.log(turistAVisitedCountry);
 
-var turistBVisitedCountry = addNewCountry.apply(turistB, [' Japan Austria']);
+var turistBVisitedCountry = addNewCountry.apply(turistB, [' Japan Austria']); // логичнее ['Japan', 'Austria']
 console.log(turistBVisitedCountry);
 
 // .bind();

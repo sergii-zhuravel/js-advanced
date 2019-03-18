@@ -1,3 +1,5 @@
+// в этом задании надо использовать функции-конструкторы
+
 var PizzaMargarita = {
     base: 'dough',
     sauce: 'tomato',

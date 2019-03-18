@@ -9,6 +9,7 @@
 	<button id="btn">Проверить</button>
 	<div id="result"></div>
 	<script type="text/javascript">
+	// работает корректно только когда нет пробелов
         var btn = document.getElementById("btn")
 		var result = document.getElementById("result")
 		var str= '';
@@ -18,6 +19,9 @@
 			for(i=0;i<inp.value.length;i++){
 				arr.push(inp.value[i])
 			}
+//	вместо предыдущих 4-х строк можно использовать:			
+//			var arr = inp.value.split("");
+
 			arr.reverse();
 			for(i=0;i<arr.length;i++){
 				str+=arr[i];

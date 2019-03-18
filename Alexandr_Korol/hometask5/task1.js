@@ -1,3 +1,5 @@
+// правильно
+
 //document.body.lastElementChild.lastElementChild.innerText = navigator.userAgent - для консолі
 var text = document.body.firstElementChild.lastElementChild;
 text.textContent = navigator.userAgent;

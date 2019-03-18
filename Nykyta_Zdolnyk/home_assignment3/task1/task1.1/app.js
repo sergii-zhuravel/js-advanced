@@ -1,3 +1,4 @@
+// правильно, только желательно задать значения по умолчанию
 function Pizza(toppings, bortik, size) {
     this.toppings = toppings;
     this.bortik = bortik;

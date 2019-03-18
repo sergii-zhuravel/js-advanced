@@ -1,8 +1,11 @@
+// правильно, есть рекомендации
 //CALL
 function revers(){
     var i;
     for(i=0; i<10; i++)
-    this.mass[i] = this.entermassive[9-i];
+    this.mass[i] = this.entermassive[9-i]; // лучше не использовать хардкод (10,9), можно:
+											// for(i=0; i<this.mass.length; i++)
+											//      this.mass[i] = this.entermassive[this.mass.length-1-i];
 };
 var obj = {
     entermassive: [0,1,2,3,4,5,6,7,8,9],

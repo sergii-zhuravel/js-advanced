@@ -1,3 +1,4 @@
+// работает правильно
 var userStr = prompt("Введите слово или фразу!");
 
 checkPalindrom(userStr);

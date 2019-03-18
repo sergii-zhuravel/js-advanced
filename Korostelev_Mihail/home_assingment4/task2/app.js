@@ -4,6 +4,9 @@
 1) Создать иерархию объектов с помощью прототипного наследования (3 уровня)
 2) Создать туже самую цепочку насследования но с помощью ES6 классов
 ------------------------ */
+
+// в этом задании надо использовать функции-конструкторы
+
 var MilitaryBattalion = {
   allStrength: function(x) {
     this.strength = x;
@@ -36,6 +39,7 @@ console.log(MilitaryBattalion.SupportSquadron());
 console.log(MilitaryBattalion.armouredPlatoon());
 console.log(MilitaryBattalion.supportPlatoon());
 
+// правильно
 class MilitaryBattalionClassExample {
   constructor(x) {
     this.strength = x;

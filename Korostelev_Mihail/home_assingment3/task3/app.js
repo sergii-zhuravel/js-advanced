@@ -1,3 +1,4 @@
+// всё правильно
 
 var state = {
   fullNameOfState: function(city, country) {

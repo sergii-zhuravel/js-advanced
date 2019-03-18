@@ -1,3 +1,4 @@
+// Вcё правильно
 var usersCount = +prompt(`Welcom to our game!!!
 Enter the count what we wished for (range 1 to 10)`);
 

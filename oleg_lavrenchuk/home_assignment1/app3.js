@@ -1,3 +1,4 @@
+// не учтены пробелы
 function palindrome(arg) {
   var word = arg;
   var modificationWord = word.split("").reverse().join("");

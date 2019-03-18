@@ -1,3 +1,5 @@
+// всё правильно
+
 function Pizza(toppings, bortik, size) {
   this.toppings = toppings;
   this.bortik = bortik;

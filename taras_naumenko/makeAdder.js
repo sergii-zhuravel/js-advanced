@@ -1,3 +1,5 @@
+// правильно
+
 function makeAdder(n){
 var c = n;
 return function(n) {

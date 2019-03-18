@@ -1,5 +1,6 @@
 //Подумайте и предложите как можно улучшить модель/абстракцию
 
+// в чём улучшения?
 function Pizza(toppings, bortik, size) {
     this.toppings = toppings;
     this.bortik = bortik;

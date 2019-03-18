@@ -1,3 +1,5 @@
+// правильно, есть замечания
+
 class Pizza {
     constructor(toppings, bortik, size){
         this.toppings = toppings;
@@ -7,7 +9,7 @@ class Pizza {
     makePizza(){
         return (this.size + " Pizza with " + this.bortik + " and with toppings: " + this.toppings)
     }
-    packPizza(box){
+    packPizza(box){ // размер упаковки должен вычисляться в зависимости от размера пицы
         return("Pizza packed into " + box + " box")
     }
 }

@@ -1,3 +1,4 @@
+// правильно
 class PizzaMargarita{
     constructor(){
         this.base = 'dough';

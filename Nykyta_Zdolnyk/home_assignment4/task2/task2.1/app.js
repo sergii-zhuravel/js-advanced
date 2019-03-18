@@ -1,3 +1,5 @@
+// правильно
+
 function Sensor() {
   this.macAddress = "71 2D 00 13 A2 00 41 80 D8 62";
 }

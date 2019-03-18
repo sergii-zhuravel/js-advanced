@@ -1,3 +1,5 @@
+// автоматическая коробка не переключает передачи
+// есть ошибки при вызове
 function CarWithManulTransmission(wheels, color) {
   this.wheels = wheels || 4;
   this.color = color || "white";
@@ -48,8 +50,8 @@ function CarWithAutomaticTransmission(wheels, color) {
   };
 }
 
-var ladaSedan = new CarWithAutomaticTransmission(4, black);
-ladaSedan.engineOn();
+var ladaSedan = new CarWithAutomaticTransmission(4, black); // нужно в кавычках "black"
+ladaSedan.engineOn(); // engineOn не метод, а поле
 ladaSedan.drive();
 
 var btr = new CarWithAutomaticTransmission(8, green);

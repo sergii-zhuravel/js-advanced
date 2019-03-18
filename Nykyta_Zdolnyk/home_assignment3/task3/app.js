@@ -1,4 +1,7 @@
+// всё правильно, только неправильно подключен script в index.html
+
 function viewObjectKeys() {
+	console.log(this);
     for (var key in this) {
         console.log(key + ": " + this[key]);
     }

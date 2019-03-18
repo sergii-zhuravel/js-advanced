@@ -1,3 +1,4 @@
+// правильно
 function Pizza (topings, bortik, size) {
     this.topings = topings;
     this.bortik = bortik;

@@ -1,3 +1,4 @@
+// правильно
 class Base {
     constructor(){
         this.basevariable = 1;

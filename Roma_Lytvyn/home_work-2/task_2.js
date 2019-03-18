@@ -1,3 +1,4 @@
+// автоматическая коробка не переключает передачи
 
 function CarWithAutomaticTransmission(maxSpeed) {
 

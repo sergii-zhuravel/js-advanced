@@ -1,9 +1,10 @@
+// правильно кроме private
 class SimpleCalculator{
     constructor(a, b){
         this.first = a;
         this.second = b;
     }
-    private sum(){
+    private sum(){ // модификатор доступа private в JS пока не реализован
         return "Result:" + (this.first + this.second);
     }
     dis(){

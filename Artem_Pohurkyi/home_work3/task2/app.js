@@ -1,3 +1,4 @@
+// работает неправильно
 function applyAll(){
     var args = [].slice.call(arguments);
     args.splice(0, 1);

@@ -1,5 +1,7 @@
+<!-- работает правильно, есть замечания -->
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
@@ -17,8 +19,11 @@
 		var words  = document.querySelector('.palindroma').value,
 			words  = words.replace(/\s+/g, ''),
 			spWord = words.split('').reverse().join('');
-		    	if(words.length !== 0 && words.length > 2 && words.trim()){
+		    	if(words.length !== 0 && words.length > 2 && words.trim()){ // если words.length > 2, то words.length !== 0 лишнее
+																			//	words.trim() тоже лишнее, пробелов уже нет
 		 			(words==spWord) ? result.value = "true" : result.value = "false";
+//					вместо предыдущей строки можно:
+//		 			result.value = words === spWord
 				}else{
 					alert("Не верное значение.");
 				}	
