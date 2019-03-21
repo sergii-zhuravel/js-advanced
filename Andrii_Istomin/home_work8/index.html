@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div classname="main"></div>
+
+
+    <script>
+      //Cookie's variant
+      //Comment one of the variants to use
+      function getCookie(name) {
+        var matches = document.cookie.match(
+          new RegExp(
+            "(?:^|; )" +
+              name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+              "=([^;]*)"
+          )
+        );
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+      }
+
+      let loginName = getCookie("loginName");
+      let button = document.createElement("button");
+      let input = document.createElement("input");
+      let span = document.createElement("span");
+
+      if (loginName != undefined) {
+        span.textContent = "Добро пожаловать на наш сайт " + loginName;
+        button.textContent = "Выйти";
+        button.onclick = function() {
+          var date = new Date();
+          document.cookie =
+            "loginName=" + loginName + ";expires=" + date.toUTCString();
+          location.reload();
+        };
+
+        document.body.appendChild(span);
+        document.body.appendChild(button);
+      } else {
+        span.textContent = "Введите имя";
+        button.textContent = "отправить";
+        document.body.appendChild(span);
+        document.body.appendChild(input);
+        document.body.appendChild(button);
+        button.onclick = function() {
+          document.cookie = "loginName=" + input.value;
+          location.reload();
+        };
+      }
+    </script>
+    <script>
+      //localStorage variant
+      let button = document.createElement("button");
+      let input = document.createElement("input");
+      let span = document.createElement("span");
+      let localStor = window.localStorage;
+
+      if (localStor.getItem("loginName") != undefined) {
+        span.textContent =
+          "Добро пожаловать на наш сайт " + localStor.getItem("loginName");
+        button.textContent = "Выйти";
+        button.onclick = function() {
+          localStor.clear();
+          location.reload();
+        };
+        document.body.appendChild(span);
+        document.body.appendChild(button);
+      } else {
+        span.textContent = "Введите имя";
+        button.textContent = "отправить";
+        document.body.appendChild(span);
+        document.body.appendChild(input);
+        document.body.appendChild(button);
+        button.onclick = function() {
+          window.localStorage.setItem("loginName", input.value);
+          location.reload();
+        };
+      }
+    </script>
+  </body>
+</html>
