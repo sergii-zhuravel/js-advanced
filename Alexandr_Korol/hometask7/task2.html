@@ -44,11 +44,12 @@
             // для кнопки на которой выполнили клик
             // ... ваш код тут
             var target = event.target;
+            console.log(target);
             target.parentNode.remove();
             
         }
         document.addEventListener("DOMContentLoaded", addItem());
-        document.addEventListener("DOMContentLoaded", removeItem());
+        document.addEventListener("DOMContentLoaded", removeItem(event));
         //Функція буде знати як саме створити елемент списку так як після загрузки сторінки скрипт зберігає у вигляді глобальних змінних усю
         // інформацію про елемент списку, а точніше змінна todoItemTemplate при загрузці сторінки повністю копіює елемент todo-item
     </script>
