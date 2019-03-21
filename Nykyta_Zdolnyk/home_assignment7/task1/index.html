@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", myFunction());
+        function myFunction() {
+          console.log('Hello from My Function');
+        }
+        console.log('Hello from main JS code');
+        /*
+            1. Первым выведется 'Hello from My Function', потом только 'Hello from main JS code', 
+               т.к. в обработчике addEventListener мы должны указать ссылку на функцию (ее имя), которая будет
+               вызываться при возникновении события. В данном примере функция сразу вызывается, а не передается только ее ссылка
+            2. Ошибкой является то, что мы должны передать ссылку на функцию myFunction, не ее вызов myFunction()! 
+               document.addEventListener("DOMContentLoaded", myFunction); 
+        */
+      </script>
+</body>
+</html>
