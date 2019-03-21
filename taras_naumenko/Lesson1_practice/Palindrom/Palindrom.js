@@ -4,5 +4,4 @@
   }
 
   alert('[topot] is Palindrome: ' + isPalindrome('topot'));
-  alert('[nurses run] is Palindrome: ' + isPalindrome('nurses run'));
- 
+  alert('[nurses run] is Palindrome: ' + isPalindrome('nurses run')); 
