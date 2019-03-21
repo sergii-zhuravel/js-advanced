@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+</head>
+<style>
+	#greeting{
+		display: inline-block;
+	}
+</style>
+<body>
+<div class="first">
+	<input type="text" id="name">
+	<input type="button" id="but" value="Авторизация" onclick="logOn();">
+</div>
+<div class="second" style="display: none;">
+	<div id="greeting"></div>
+	<input type="button" id="but_" value="Выход" onclick="logOf();">
+</div>
+<script>
+	function logOn() {
+		var name 		= document.querySelector('#name'),
+			userName 	= name.value;
+		if(userName.length > 1){
+			localStorage.setItem('name', userName);
+			location.reload();
+		}
+	};
+	function logOf(){
+		localStorage.removeItem("name");
+		location.reload();
+	}
+	function check(){
+		if(localStorage.getItem('name') !== null){
+			var user = localStorage.getItem('name');
+			greeting.innerHTML = "Добро пожаловать, " + user + '!';
+			document.querySelector('.first').style.display = 'none'
+			document.querySelector('.second').style.display = 'block'
+		}
+	};
+	check();
+</script>
+</body>
+</html>

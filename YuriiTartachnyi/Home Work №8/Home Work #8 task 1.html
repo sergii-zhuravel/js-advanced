@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+</head>
+<style>
+	input {
+		border: 1px solid blue;
+	}	
+</style>
+<body>
+	<div id="formone">
+		<input id="name" type="text" name="name">
+		<input id="but" type="button" value="Авторизация" onclick="logonFunc();">
+	</div>
+	<div id="formtwo" style="display: none;">
+		<input id="logout" type="button" value="Выйти" onclick="logOut();">
+	</div>
+	<script>
+		
+		function logonFunc(){
+			var user 		= document.querySelector('#name'),
+				userName 	= user.value;
+				if(userName.length > 1){
+					document.cookie = 'name=' + userName + ';';
+					location.reload();
+				}
+		};
+		
+		function logOut(){
+			var curentCookie = document.cookie,
+				curentKey = curentCookie.split(';')
+			for (var j = 0; j < curentKey.length; j++){
+				var keyOut = curentKey[j].split('=');
+				if (keyOut[0].trim() == 'name'){
+					var date = new Date(0);
+                	document.cookie = curentKey[j] + ';expires=' + date.toUTCString();
+                	document.cookie = 'name;expires=' + date.toUTCString();
+                	location.reload();	
+				}
+			}
+		};
+		
+		function logOn(){
+			var getCookie = document.cookie,
+				cookieKey = getCookie.split(';');
+			for (var i = 0; i < cookieKey.length; i++){
+				var key = cookieKey[i].split('=');
+				if (key[0].trim() == 'name'){
+					alert("Добро пожаловать, " + key[1].trim() + '!');
+					formtwo.style.display = 'block';
+					formone.style.display = 'none';
+					
+				}
+			}
+		}
+		logOn();
+	</script>
+</body>
+</html>
