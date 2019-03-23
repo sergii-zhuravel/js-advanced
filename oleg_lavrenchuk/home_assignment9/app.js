@@ -22,20 +22,20 @@ window.onload = function () {
 
 function createElements(obj) {
     var image = document.createElement('img');
-    var fullName = document.createElement('span');
+    var span = document.createElement('span');
+    var fullName = document.createElement('a');
     var descript = document.createElement('span');
-    var link = document.createElement('a');
 
     image.setAttribute('src', obj.owner['avatar_url']);
     image.setAttribute('width', '100px');
     image.setAttribute('height', '100px');
-    fullName.innerHTML = '<br><b>Имя репозитория:</b> ' + obj.full_name + '<br>';
-    descript.innerHTML = '<b>Описание:</b> ' + obj.description + '<br>'
-    link.href = obj.html_url;
-    link.innerHTML = obj.html_url + '<br><hr>';
+    fullName.textContent = obj.full_name;
+    fullName.href = obj.html_url;
+    span.innerHTML = '<br><b>Имя репозитория</b>: ';
+    descript.innerHTML = '<br><b>Описание:</b> ' + obj.description + '<hr>';
 
     div.appendChild(image);
-    div.appendChild(fullName);
+    div.appendChild(span);
+    span.appendChild(fullName);
     div.appendChild(descript);
-    div.appendChild(link);
 }
