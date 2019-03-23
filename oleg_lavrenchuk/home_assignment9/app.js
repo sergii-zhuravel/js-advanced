@@ -31,7 +31,7 @@ function createElements(obj) {
     image.setAttribute('height', '100px');
     fullName.textContent = obj.full_name;
     fullName.href = obj.html_url;
-    span.innerHTML = '<br><b>Имя репозитория</b>: ';
+    span.innerHTML = '<br><b>Имя репозитория<b>: ';
     descript.innerHTML = '<br><b>Описание:</b> ' + obj.description + '<hr>';
 
     div.appendChild(image);
