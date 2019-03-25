@@ -1,0 +1,17 @@
+.head_todo {
+    padding: 0px;
+    margin-right: 1px;
+    background: salmon;
+    font-family: 'Margarine', cursive;
+}
+.content_todo {
+    margin: 1px 1px 0 0;
+    height: 600px;
+}
+.add_elements {
+    margin: 0 0 2px 152px;
+}
+.content_todo, .head_todo , .input_todo, .input_button{
+    border: 1px solid #454312;
+    border-radius: 2px;
+}
