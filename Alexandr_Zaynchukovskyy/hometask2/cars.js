@@ -2,7 +2,6 @@ function CarWithAutomaticTransmission(wheels, color) {
   this.wheels = wheels || 4;
   this.color = color || 'white';
   this.engineOn = false;
-  this.transmission = 0;
 
   this.switchEngine = function () {
     if (this.engineOn) {
