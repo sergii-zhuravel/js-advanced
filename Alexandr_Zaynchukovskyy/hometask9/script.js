@@ -2,8 +2,8 @@
 var url = 'https://api.github.com/search/repositories?q=';
 
 function searchResult() {
-    searchValue = document.getElementById('input-search').Value;
-    if (searchValue === '') {
+    var searchValue = document.getElementById('input-search').value;
+    if (searchValue === undefined||searchValue === '') {
         console.log('Нет значения поиска');
         return;
     }
@@ -28,33 +28,17 @@ function readConent(httpRequest) {
 }
 
 function createList(obj) {
-    var item;
-    
-    for (var i = 0; j < 10; i++) {
-        item = obj[j];
+    var startElem = document.getElementById('GoOn');
 
-        var list = document.createElement('ul');
-        var avatar_url = document.createElement('li');
-        var full_name = document.createElement('li');
-        var description = document.createElement('li');
-        var html_url = document.createElement('li');
-        var info = document.createElement('div');
-        var img = document.createElement('img');
-
-        document.body.appendChild(info);
-        info.appendChild(list);
-        list.appendChild(name);
-        list.appendChild(desc);
-        list.appendChild(avatar);
-        avatar.appendChild(img);
-        list.appendChild(html_url);
-
-        img.setAttribute('src', items[j].owner.avatar_url);
-        name.textContent = 'Full name: ' + items[j].full_name;
-        desc.textContent = 'Description: ' + items[j].description;
-        html_url.textContent = 'Html url: ' + items[j].html_url;
-        info.style.borderBottom = '1px solid black';
+    //clean up
+    tables = document.getElementsByTagName('TABLE');
+    for(var i = 0; i < tables.length; i++){
+        startElem.removeChild(tables[i])
+        el = tables[i];
     }
+    startElem.appendChild(buildTable(obj.items));
+
+
 }
 
 function makeRequest(url, method, params) {
@@ -62,9 +46,6 @@ function makeRequest(url, method, params) {
 
     if (window.XMLHttpRequest) { // Mozilla, Safari, ...
         httpRequest = new XMLHttpRequest();
-        // if (httpRequest.overrideMimeType) {
-        //     // httpRequest.overrideMimeType('text/xml');
-        // }
     } else if (window.ActiveXObject) { // IE
         try {
             httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
@@ -85,4 +66,41 @@ function makeRequest(url, method, params) {
     httpRequest.open(method, url, true);
     httpRequest.send(params);
 
+}
+
+function buildTable(data) {
+    var table = document.createElement("table");
+    table.className = "gridtable";
+    var thead = document.createElement("thead");
+    var tbody = document.createElement("tbody");
+    var headRow = document.createElement("tr");
+    ["Avatar", "Full name", "Description"].forEach(function (el) {
+        var th = document.createElement("th");
+        th.appendChild(document.createTextNode(el));
+        headRow.appendChild(th);
+    });
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+    data.forEach(function (el) {
+        var tr = document.createElement("tr");
+        var td = document.createElement("td");
+        var img = document.createElement('img');
+        img.setAttribute('src', el.owner.avatar_url);
+        td.appendChild(img);
+        tr.appendChild(td);
+        var td = document.createElement("td");
+        full_name = document.createElement('a');
+        full_name.innerHTML = el.full_name;
+        full_name.setAttribute('href', el.html_url);
+        td.appendChild(full_name);
+        tr.appendChild(td); 
+        var td = document.createElement("td");
+        td.appendChild(document.createTextNode(el.description))
+        tr.appendChild(td); 
+
+
+        tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    return table;
 }
