@@ -1,49 +1,39 @@
+var state = [];
+
 document.addEventListener('DOMContentLoaded', initBoard);
-var newTodoInput;
 
 function ToDo(title) {
   this.id = 1;
   this.title = title;
   this.state = 'todo';
-}
 
-function StateCl() {
-  this.toDoArr = [];
-
-  this.addItemToState = function(item) {
-    this.toDoArr.push(item);
-  };
-  this.deleteItemFromState = function(key, item) {
-    this.toDoArr = this.toDoArr.filter(element => element.id != item.id);
-  };
-  this.moveItemToOtherPanel = function(key1, key2, itemId) {
-    var item = state.toDoArr.find(element => element.id == itemId);
-    this.deleteItemFromState(item);
+  this.addItemToState = function (key, item) {
+    this[key].push(item);
+  },
+  this.deleteItemFromState = function (key, item) {
+    this[key] = this[key].filter(element => element.id != item.id);
+  },
+  this.moveItemToOtherPanel = function (key1, key2, itemId) {
+    var item = state[key1].find(element => element.id == itemId);
+    this.deleteItemFromState(key1, item);
     this.addItemToState(key2, item);
   }
-}
+};
 
-function addToDo(){
-  var title = newTodoInput.value;
-  if (title === undefined||title === '') {
-    console.log('Нет значения');
-    return;
-  };
-
-  var item = new ToDo(title);
-  state.addItemToState(item);
+function addToDo(title){
+  var newEl = new ToDo(title);
+  ToDo.addItemToState;
 }
 
 function removeToDo(id){
   var newEl = new ToDo(id);
-  state.addItemToState(newEl);
+  state.push(newEl);
 }
 
 
 function initBoard() {
-  newTodoInput = document.getElementById('new-todo');
   state = loadToDoFromLS();
-  if (state.toDoArr.length === 0){return};
+  if (state.length === 0){return};
   initPanel('todo', state.todo);
   initPanel('inprogress', state.inprogress);
   initPanel('done', state.done);
@@ -70,7 +60,7 @@ function createTodoElement(id, title) {
 function loadToDoFromLS(){
   var localState = localStorage.getItem('State');
   if (localState === null) {
-    return new StateCl;
+    return []
   }
   else{
     return localState;
