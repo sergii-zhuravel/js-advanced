@@ -1,0 +1,12 @@
+#rest-info img {
+  max-width: 100px;
+  max-height: 100px;
+}
+#rest-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+body {
+  padding: 50px;
+}
