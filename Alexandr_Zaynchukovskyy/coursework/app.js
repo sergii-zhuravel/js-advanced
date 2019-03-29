@@ -6,14 +6,14 @@ var url = 'https://jsonplaceholder.typicode.com/todos?_limit=10';
 document.addEventListener('DOMContentLoaded', initBoard);
 
 function ToDo(title, state, id) {
-  this.id = id|| this.getNextId();
+  this.id = id || this.getNextId();
   this.title = title;
   this.state = state || 'todo';
 }
 
 ToDo.prototype.nextId = 0;
-ToDo.prototype.getNextId = function() {
-    return ++ToDo.prototype.nextId;
+ToDo.prototype.getNextId = function () {
+  return ++ToDo.prototype.nextId;
 }
 
 function StateCl() {
@@ -23,8 +23,8 @@ function StateCl() {
     this.toDoArr.push(item);
     saveToDoInLS();
   };
-  this.deleteItemFromState = function (key, item) {
-    this.toDoArr = this.toDoArr.filter(element => element.id != item.id);
+  this.deleteItemFromState = function (itemId) {
+    this.toDoArr = this.toDoArr.filter(element => element.id != itemId);
     saveToDoInLS();
   };
   this.moveItemToOtherPanel = function (key1, key2, itemId) {
@@ -72,30 +72,48 @@ function addToDo() {
   newTodoInput.value = '';
 }
 
-function removeToDo(id) {
-  var newEl = new ToDo(id);
-  state.addItemToState(newEl);
+function removeToDo(e) {
+  e.preventDefault();
+  var id = e.target.parentElement.getAttribute('id');
+  var el = document.getElementById(id);
+  if (el) {
+    el.parentNode.removeChild(el);
+    state.deleteItemFromState(id);
+  } else {
+    console.error('Cannot find element, event:', e)
+  }
 }
 
 
 function createTodoElement(id, title) {
-  var todoElement = document.createElement("span");
+  var todoElement = document.createElement("div");
   todoElement.id = id;
+  todoElement.setAttribute("class", "todoline");
   todoElement.draggable = true; // for drag and drop
   todoElement.ondragstart = onDragStart; // for drag and drop
-  todoElement.textContent = title;
+  var spanEl = document.createElement("span");
+  spanEl.setAttribute("class", "todotext");
+  spanEl.textContent = title;
+  todoElement.appendChild(spanEl);
+  var delBtnEl = document.createElement("span");
+  delBtnEl.setAttribute("class", "delete-button");
+  delBtnEl.setAttribute("onclick", "removeToDo(event)");
+  delBtnEl.textContent = 'X';
+  //.innerHTML = '<span class="delete-button" onclick="removeToDo(event)" title="Delete current item">X</span>';
+  todoElement.appendChild(delBtnEl);
+  // delBtnEl.type = 'submit';
+  // delBtnEl.value = 'Del';
+  // delBtnEl.innerText = 'Del';
+
   return todoElement;
 }
 
 function cleanAll() {
   state = new StateCl;
-  spans = document.getElementsByTagName('span');
-  for (var el of spans) {
-    el.parentNode.removeChild(el);
-  };
+  var todoEls = document.getElementsByClassName('todoline');
 
-  for (var i = spans.length-1; i >= 0; i--) {
-    el = spans[i];
+  for (var i = todoEls.length - 1; i >= 0; i--) {
+    el = todoEls[i];
     el.parentNode.removeChild(el);
   }
   //saveToDoInLS();

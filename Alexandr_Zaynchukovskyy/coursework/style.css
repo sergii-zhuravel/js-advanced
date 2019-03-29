@@ -9,13 +9,23 @@
   padding: 4px;
 }
 
-span {
+.todotext {
   width: 90%;
   display: inline-block;
   border: black 1px solid;
   margin: 4px;
   padding: 4px;
 }
+
+.delete-button{
+  height: 15px;
+  width: 15px;
+  background-color: lightcoral;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+}
+
 #board-head {
   width: 30%;
   background-color: lightgrey;
