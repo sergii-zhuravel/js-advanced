@@ -39,7 +39,8 @@ function StateCl() {
 function initBoard() {
   newTodoInput = document.getElementById('new-todo');
   state = loadToDoFromLS();
-  if (state.toDoArr.length === 0) {
+  if (state===undefined || state.toDoArr.length === 0) {
+    state = new StateCl;
     return
   };
   initPanel(state.toDoArr);
@@ -99,12 +100,7 @@ function createTodoElement(id, title) {
   delBtnEl.setAttribute("class", "delete-button");
   delBtnEl.setAttribute("onclick", "removeToDo(event)");
   delBtnEl.textContent = 'X';
-  //.innerHTML = '<span class="delete-button" onclick="removeToDo(event)" title="Delete current item">X</span>';
   todoElement.appendChild(delBtnEl);
-  // delBtnEl.type = 'submit';
-  // delBtnEl.value = 'Del';
-  // delBtnEl.innerText = 'Del';
-
   return todoElement;
 }
 
@@ -185,5 +181,4 @@ function makeRequest(url, method, params) {
   };
   httpRequest.open(method, url, true);
   httpRequest.send(params);
-
 }
