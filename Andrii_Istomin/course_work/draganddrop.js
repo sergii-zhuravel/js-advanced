@@ -1,20 +1,24 @@
-function onDragStart(event) {
-    event.dataTransfer.setData("text", event.target.getAttribute('id'));
-  }
-  
-  function allowDrop(ev) {
-    ev.preventDefault();
-  }
-  
-  
-  function drop(e) {
+var arr = [];
+function allowDrop(e) {
+    e.preventDefault();
+}
+function drag(e) {
+    e.dataTransfer.setData("text", e.target.id);
+    e.dataTransfer.setData("content", e.target.textContent);
+}
+function drop(e, block) {
     e.preventDefault();
     var data = e.dataTransfer.getData("text");
-    var item = document.getElementById(data);
-    if (item) {
-      state.moveItemToOtherPanel(item.parentElement.id, e.target.id, item.id)
-      e.target.appendChild(item);
-    } else {
-      console.error('Cannot find element, event:', e)
+    var content = e.dataTransfer.getData("content");
+    if(block.id == "div2"){
+        if(arr.indexOf(content) == -1){
+            arr.push(content);
+        }
     }
-  }
+    if(block.id == "div1"){
+        if(arr.indexOf(content) != -1){
+           arr.splice(arr.indexOf(content), 1);
+        }
+    }
+    block.appendChild(document.getElementById(data));
+}

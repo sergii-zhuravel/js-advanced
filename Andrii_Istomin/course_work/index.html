@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Ultimate ToDo App</title>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <link
       rel="stylesheet"
@@ -16,34 +16,38 @@
   <body>
     <div class="container-fluid">
       <div id="panel">
-        <input id="new-todo" placeholder="Enter new todo" />
+        <input id="newtodo-input" placeholder="Enter new todo" />
         <button id="addtodo-button">Add</button>
+        <button id="download-button">Download</button>
       </div>
 
       <div class="row main-row">
-        <div class="col md-4">
+        <div class="col todo_col md-4">
           <label>ToDo</label>
           <div
             id="todo"
-            ondrop="drop(event)"
+            class="todo"
+            ondrop="drop(event,this)"
             ondragover="allowDrop(event)"
           ></div>
         </div>
 
-        <div class="col md-4">
+        <div class="col inprog-col md-4">
           <label>In progress</label>
           <div
             id="inprogress"
-            ondrop="drop(event)"
+            class="inprog"
+            ondrop="drop(event,this)"
             ondragover="allowDrop(event)"
           ></div>
         </div>
 
-        <div class="col md-4">
+        <div class="col done-col md-4">
           <label>Done</label>
           <div
             id="done"
-            ondrop="drop(event)"
+            class="done"
+            ondrop="drop(event,this)"
             ondragover="allowDrop(event)"
           ></div>
         </div>
@@ -52,10 +56,5 @@
 
     <script src="draganddrop.js"></script>
     <script src="main.js"></script>
-    <!-- <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script> -->
   </body>
 </html>
