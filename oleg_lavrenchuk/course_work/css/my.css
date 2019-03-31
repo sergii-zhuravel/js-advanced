@@ -1,0 +1,47 @@
+.head_todo {
+    padding: 0px;
+    margin-right: 1px;
+    background: salmon;
+    font-family: 'Margarine', cursive;
+}
+.content_todo div {
+    margin: 1px 1px 0 0;
+    
+}
+.title_todos {
+    margin-top: 2px
+}
+.content_todo div, .head_todo , .input_todo {
+    border: 1px solid #454312;
+    border-radius: 2px;
+}
+#del {
+    height: 16px;
+    border-radius: 10px;
+    margin-right: 3px;
+}
+.content_todo div{
+    font-family: 'Margarine', cursive; 
+    padding: 3px;
+    background:  #F0FFF0
+}
+.add_elements {
+    padding: 2px 1px 2px 0;
+}
+.todos {
+    background: green;
+    border-radius: 10px !important
+}
+#div1 div{
+    background: #ff3333
+}
+#div2 div {
+    background: #ffff4d
+}
+#div3 div {
+    background: #00FF00
+}
+
+
+
+
