@@ -13,39 +13,44 @@
     </div>
     <button class="logout_" style="display:none">Log out</button>
     <script>
-        var logoutbtn = document.querySelector('.logout_');
+        var a = document.cookie;
+        if(a === '')
+        {
+            var menu = document.querySelector('#menu');
+            menu.style.display = 'block';
+            var btn = document.querySelector('.btn');
+            
+           
+        }
+        else{
+            document.querySelector('.logout_').style.display = 'block';
+
+        }
+        addEventListener('click', function(event){
+           if(event.target.className === 'logout_')
+           {
+            var logoutbtn = document.querySelector('.logout_');   
+        setCookie('name', '', -1);
+        logoutbtn.style.display = 'none';
+            console.log('The cookie was deleted ');
+           }
+        });
+        addEventListener('click', function(event){
+            if(event.target.className === 'btn')
+            {   var value = document.querySelector('.logs').value;
+                document.cookie = 'name='+value;
+                console.log('Cookie with the name ' + value + ' was created');
+                menu.style.display = 'none';
+                document.querySelector('.logout_').style.display = 'block';
+                console.log('The cookie was added succsesfully');
+            }
+        })
+        
         function setCookie(key, value, expires) {
         var date  = new Date;
         date.setTime(date.getTime() + expires * 24 * 60 * 60 * 1000);
         document.cookie = key + '=' + value + ';path=/;expires=' + date.toUTCString();
 }
-        function deleteCookie(key) {
-        setCookie(key, '', -1);
-        logoutbtn.style.display = 'none';
-}
-        function mycookiess(){
-        console.log(document.cookie);
-        
-        if(document.cookie === ''){
-            var key = 'name';
-            var expires = 4;
-            
-        var menu = document.querySelector('.menu');
-        menu.style.display = 'block';
-        var btn = document.querySelector('.btn');
-        btn.onclick = function(){
-            var values = document.querySelector('.logs').value;
-            setCookie(key, values, expires);
-            logoutbtn.style.display = 'block';
-            }
-        }
-        else
-        {alert('Welcome');
-        
-        logoutbtn.style.display = 'block';
-        logoutbtn.onclick = deleteCookie(key);
-        
-        }}
         
     </script>
 </body>
