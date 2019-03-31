@@ -1,0 +1,46 @@
+#board{
+  width: 100%;
+  background-color: lightblue;
+}
+
+span {
+  width: 90%;
+  display: inline-block;
+  border: black 1px solid;
+  margin: 4px;
+  padding: 4px;
+}
+
+#todo {
+  width: 30%;
+  background-color: white;
+  border: black 1px solid;
+  border-top: red 5px solid;
+  float: left;
+  height: 600px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  margin: 0 10px;
+}
+#inprogress {
+  width: 30%;
+  background-color: #ffffff;
+  border: black 1px solid;
+  border-top: green 5px solid;
+  float: left;
+  height: 600px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  margin: 0 10px;
+}
+#done {
+  width: 30%;
+  background-color: white;
+  border: black 1px solid;
+  border-top: yellow 5px solid;
+  float: left;
+  height: 600px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  margin: 0 10px;
+}
