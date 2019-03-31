@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="panel">
+    <input id="new-todo" placeholder="Enter new todo"/>
+    <button id="addToDo" class="button" onclick="addToDo(event)">Add element in "To Do"</button>
+    <button id="loadToDoFromLocal" class="button" onclick="initBoard(event)">Load from LS</button>
+    <button id="loadToDoFromServer" class="button" onclick="loadToDoFromServer(event)">Load from Server</button>
+    <button id="cleanAll" class="button" onclick="cleanAll(event)">Clean All</button>
+  </div>
+
+  <div id="board">
+    <div id="board-head">ToDo</div><div id="board-head">In progress</div><div id="board-head">Done</div>
+    <div id="todo" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="inprogress" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="done" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  </div>
+  <script src="draganddrop.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
