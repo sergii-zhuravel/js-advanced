@@ -1,71 +1,111 @@
-var state = {
-  todo: [
-    { id: 1, title: "Test todo 1" },
-    { id: 2, title: "Test todo 2" },
-    { id: 3, title: "Test todo 3" }
-  ],
-  inprogress: [],
-  done: [],
-  addItemToState: function(key, item) {
-    this[key].push(item);
-  },
-  deleteItemFromState: function(key, item) {
-    this[key] = this[key].filter(element => element.id != item.id);
-  },
-  moveItemToOtherPanel: function(key1, key2, itemId) {
-    var item = state[key1].find(element => element.id == itemId);
-    this.deleteItemFromState(key1, item);
-    this.addItemToState(key2, item);
+class AddDel {
+  constructor(url) {
+    this.url = url;
+    this.addButton = document.getElementById("addtodo-button");
+    this.addButton.addEventListener("click", this.addTodo);
+    this.downloadButton = document.getElementById("download-button");
+    this.downloadButton.addEventListener("click", this.downloadTodos);
   }
-};
-
-let addTodoButton = document.getElementById("addtodo-button");
-let panels = document.getElementById("todo");
-var elem = { id: 5, title: "HELOOOOO" };
-
-addItemToPanel=()=> {
-  let inputValue = document.getElementById("new-todo").value;
-  let panel = document.getElementById("todo");
-  let id = state.todo[state.todo.length - 1].id + 1;
-  let newElem = { id: id, title: inputValue };
-  state.addItemToState("todo",newElem)
-  panel.innerHTML = ""
-  initPanel("todo", state.todo);
-  console.log(state.todo)
-}
-
-addTodoButton.addEventListener("click", addItemToPanel);
-document.addEventListener("DOMContentLoaded", initBoard);
-
-// console.log(elem)
-// console.log(state.todo)
-// state.todo.push(elem)
-// console.log(state.todo)
-// state.addItemToState(todo, elem)
-
-function initBoard() {
-  initPanel("todo", state.todo);
-  initPanel("inprogress", state.inprogress);
-  initPanel("done", state.done);
-}
-
-function initPanel(key, todoList) {
-  var panel = document.getElementById(key);
-  for (var i = 0; i < todoList.length; i++) {
-    var currentItemObject = todoList[i];
-    var newTodoElement = createTodoElement(
-      currentItemObject.id,
-      currentItemObject.title
-    );
-    panel.appendChild(newTodoElement);
+  async request() {
+    var response = await fetch(url);
+    this.object = await response.json();
+    this.object.length = 10;
+  }
+  removeElement(event) {
+    this.id = event.target.parentNode.id;
+    for (var key in localStorage) {
+      this.newKey = key.replace(/[0-9]/g, "");
+      localStorage.removeItem(
+        `${this.newKey}${this.id}`,
+        localStorage[`${this.newKey}${this.id}`]
+      );
+      localStorage.removeItem(this.id);
+    }
+    event.target.parentNode.remove();
   }
 }
 
-function createTodoElement(id, title) {
-  var todoElement = document.createElement("span");
-  todoElement.id = id;
-  todoElement.draggable = true; // for drag and drop
-  todoElement.ondragstart = onDragStart; // for drag and drop
-  todoElement.textContent = title;
-  return todoElement;
+class NewTodo extends AddDel {
+  createElements(obj) {
+    var firstContent = document.querySelector(".todo");
+    console.log(firstContent);
+    for (var i = 0; i < obj.length; i++) {
+      var arr = obj[i];
+      var todo = document.createElement("span");
+      var delButt = document.createElement("img");
+      delButt.id = "del";
+      delButt.addEventListener("click", super.removeElement);
+      delButt.setAttribute("src", "icon.svg");
+      todo.draggable = true;
+      todo.setAttribute("ondragstart", "drag(event)");
+      todo.classList.add("todos");
+      if (obj[i].hasOwnProperty(`title`)) {
+        todo.innerHTML = arr.title + "<br>";
+        todo.id = arr.id;
+      } else {
+        var m = Object.getOwnPropertyNames(arr);
+        var check = document.getElementById(arr[m[i + 1]]);
+        if (check) {
+          check.remove();
+        }
+        todo.innerHTML = arr[m[i]] + " <b>(from LocalStor)</b>" + "<br>";
+        todo.id = arr[m[i + 1]];
+      }
+    }
+    todo.appendChild(delButt);
+    firstContent.appendChild(todo);
+    localStorage.setItem(todo.id, todo.innerText);
+  }
 }
+
+class CheckLocal extends NewTodo {
+  hasInlocalStorage() {
+    var local = JSON.parse(JSON.stringify(localStorage));
+    for (var i = 0; i < this.object.length; i++) {
+      if (
+        (local[`title${i + 1}`] == this.object[i].title &&
+          local[`id${i + 1}`] == this.object[i].id) ||
+        Object.keys(this.object).length == 0
+      ) {
+        var newObj = {};
+        var newArr = [];
+        newObj[`title${i + 1}`] = local[`title${i + 1}`];
+        newObj[`id${i + 1}`] = local[`id${i + 1}`];
+        newArr.push(newObj);
+        super.createElements(newArr);
+      } else {
+        var myObj = this.object[i];
+        var myArr = [];
+        for (var key in myObj) {
+          localStorage.setItem(`${key}${i + 1}`, myObj[key]);
+        }
+        myArr.push(myObj);
+        super.createElements(myArr);
+      }
+    }
+  }
+}
+
+class Commands extends CheckLocal {
+  addTodo() {
+    var inp = document.getElementById("newtodo-input");
+    if (inp.value.trim().length === 0) {
+      return 0;
+    }
+    var arr = [];
+    var inpTodo = {};
+    inpTodo.title = inp.value;
+    inp.value = "";
+    inpTodo.id = "num" + Math.round(Math.random() * (1000 - 1) + 1);
+    arr.push(inpTodo);
+    super.createElements(arr);
+  }
+
+  async downloadTodos() {
+    await super.request();
+    super.hasInlocalStorage();
+  }
+}
+
+var url = "https://jsonplaceholder.typicode.com/todos";
+new Commands(url);

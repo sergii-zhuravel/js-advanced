@@ -1,5 +1,5 @@
-body{
-    padding: 15px;
+body {
+  padding: 15px;
 }
 
 #board {
@@ -10,7 +10,7 @@ body{
 
 span {
   width: 98%;
-  display: inline-block;
+  display: flex;
   border: black 1px solid;
   margin-left: 5px;
   margin-bottom: 5px;
