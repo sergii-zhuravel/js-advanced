@@ -1,5 +1,0 @@
-Tartachnyi Yurii
-
-HTML: 80%
-CSS: 92%
-JS: 84%
