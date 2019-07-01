@@ -1,0 +1,66 @@
+.body{
+	font-size: 20px;
+
+	
+	
+}
+.calculator{
+	width: 250px;
+	height: 250px;
+	background-color:pink;
+	margin:0 auto;
+	box-sizing: border-box;
+	border-radius: 10px;
+	
+	
+	}
+
+	.inputnumber {
+		text-align: center;
+
+		
+
+	}
+
+	.result {
+		background-color: #fff;
+		font-size: 25px;
+		width: 200px;
+		height: 40px;
+		box-sizing: border-box;
+		border: solid black 1px;
+		border-radius: 10px;
+		margin: 0 auto;
+		margin-top: 20px;
+
+
+	}
+	input{
+		width: 200px;
+		height: 30px;
+		box-sizing: border-box;
+		border: solid black 1px;
+		border-radius: 10px;
+		margin-top: 20px;
+		padding: 10px;
+
+	}
+	button {
+		width: 30px;
+		height: 30px;
+		border: solid black 1px;
+		border-radius: 10px;
+		margin-top: 20px;
+		font-size: 25px;
+		text-align: center;
+		/*position: relative;*/
+
+
+
+	}
+	/*#add, #mult, #minus, #divide{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+	}*/
