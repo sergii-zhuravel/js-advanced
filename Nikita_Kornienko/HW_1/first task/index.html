@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guessing out of 10 - game</title>
+    <link href="./css/main.css" rel="stylesheet">
+    <link href="./css/modal.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+<div class="container">
+        <div class="header">
+            <h1>Guess the number (1 of 10)</h1>
+            <button id="restartBtn" class="btn header__btn--restart">Restart game</button>
+            <div id="score" class="header__score">
+                <p>Player: 0</p>
+                <p>Computer: 0</p>
+            </div>
+        </div>
+        <h2>Make your Choice: </h2>
+        <div class="board">
+            <button type="submit" class="btn board__btn board__btn--number" id="numberMade">
+                Make a number
+            </button>
+            <div class="board__text" id="boardText">
+            </div>
+            <button type="submit" class="btn board__btn board__btn--guess" id="boardGuess">
+                Guess the number
+            </button>
+        </div>
+        <div class="board__number">
+            <input type="text" name="number" 
+            id="boardInput" class='board__number--input' 
+            placeholder="Input your guess!">
+        </div>
+</div>
+<!--- Modal ----->
+<div class="modal">
+    <div id="result" class="modal-content">
+    </div>
+</div> 
+<script src="./js/main.js"></script>
+</body>
+</html>
+
+
