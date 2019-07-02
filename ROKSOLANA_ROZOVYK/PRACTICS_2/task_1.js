@@ -1,6 +1,6 @@
-let numbUser = +prompt("Write number");
+let numbUser = prompt("Write number");
 
-if(typeof(numbUser) != NaN)
+if(!isNaN(numbUser))
 {
     if( numbUser % 2 == 0)
        console.log("Number is even");
