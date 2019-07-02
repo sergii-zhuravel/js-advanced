@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body  style="text-align: center;">
+    Is even <input type="number" id="number" size="10"><br>
+    <form action="" name="myForm" onsubmit="return myFunction()">
+        <input type="submit" value="Угадать">
+    </form>     
+        <script>
+        function myFunction() {
+            var userInput = document.getElementById("number").value;
+
+            if (userInput % 2 == 0){
+                alert("Число четное")
+            }
+             else {
+                alert("Число не четное")
+            };
+        }</script>
+</body>
+
+</html>

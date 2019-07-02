@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Palindrom checker</title>
+</head>
+<body style="background-color:antiquewhite ">
+    <form action="" name="myForm" onsubmit="return myFunction()" style="text-align: center;">
+        Введите слово для проверки:<br>
+        <input type="text" name="word"><br>
+        <input type="submit">
+
+    </form>
+    <script>
+        myFunction = () => {
+            var wordToCheck = document.forms["myForm"]["word"].value;
+            var reversedWord = wordToCheck.replace(/\s/g,'').split('').reverse().join(''); 
+            if (wordToCheck.length <= 2) {
+                alert("Ввод не может быть меньше трех символов")
+            }
+            else if (wordToCheck ==reversedWord){
+                alert("Это палиндромом!");
+            }
+            else {
+                alert("Не палиндромом.")
+            }
+        }
+        </script>
+</body>
+</html>

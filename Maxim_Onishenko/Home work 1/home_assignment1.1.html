@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+</head>
+<body style="background-color:antiquewhite ">
+    <form action="" name="myForm" onsubmit="return myFunction()" style="text-align: center;">
+        Введите число от 1 до 10 <input type="number" name="number" size="2"><br>
+        <input type="submit" value="Угадать">
+
+    </form>
+    
+    <script>
+        alert("Угадайте число")
+        function myFunction() {
+            var compChoice = Math.ceil(Math.random()*10);
+            var usrInput = document.forms["myForm"]["number"].value;
+            /* В чем разница ? document.getElementById("number").value; */
+
+            if (usrInput>10 || usrInput < 1){
+                alert("Число должно быть от 1 до 10")
+            }
+            if (compChoice==usrInput) {
+                alert("Угадал")
+            } else {
+                alert("Повезет в следующий раз. " + "Компьютер выбрал "+ compChoice)
+            };
+        }
+        
+        </script>
+</body>
+</html>
