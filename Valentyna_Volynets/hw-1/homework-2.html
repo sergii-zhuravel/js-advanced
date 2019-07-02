@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- 
+    2. JavaScript калькулятор
+    Написать простейший JavaScript калькулятор с двумя полями для ввода 2х чисел от пользователя и четырмя арифметическими операциями - сложение, вычитание, умножение и деление
+    (Только UI/HTML)
+    -->
+    
+    <style>
+        .wrapper {
+            margin: 0 auto;
+            width: 400px;  
+            margin-top: 100px;      
+        }
+
+        .calc {
+            margin: 0 auto;
+            position: relative;
+            width: 300px;
+            height: 250px;
+            background: grey;
+            padding: 30px;
+        }
+
+        #close {
+            position: absolute;
+            font-size: 20px;
+            color: black;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+
+        .numbers {
+            display: flex;
+            font-size: 16px;
+            line-height: 26px;
+            margin-top: 25px;
+        }
+
+        .xx {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+            width: 100px;
+
+        }
+
+        .xx span, .result span {
+            padding-right: 5px;
+        }
+        
+        .math {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .btn {
+            width: 30px;
+            height: 30px;
+            background: rgb(214, 217, 219);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .result {
+            display: flex;
+            justify-content: center;
+            font-size: 16px;
+            line-height: 26px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <form class="calc">
+            <span class="close" id="close"><i class="far fa-window-close"></i> </i></span>
+            <div class="numbers">
+                <div class="xx">
+                    <span>x1=</span>
+                    <input type="text" name="x1" size="10">
+                </div>
+                <div class="xx">
+                    <span>x2=</span>
+                    <input type="text" name="x2" size="10">
+                </div>
+            </div>
+            <div class="math">
+                <input type="button" name="button" value="+" class="btn"/>
+                <input type="button" name="button" value="-" class="btn"/>
+                <input type="button" name="button" value="*" class="btn"/>
+                <input type="button" name="button" value="/" class="btn"/>
+                <input type="button" name="button" value="=" class="btn"/>
+            </div>
+            <div class="result">
+                <span>result=</span>
+                <input type="text" name="result" size="30">
+            </div>
+        </form>
+    </div>
+
+    <script>   
+    </script>
+</body>
+</html>

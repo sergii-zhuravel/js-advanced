@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 3. Написать функцию которая определяет является ли слово или фраза (без учета пробелов) палиндромом. 
+        // Пример палиндрома - топот, nurses run
+
+        console.log('task-3');
+      
+        var text = prompt('input text');             // вводим текст
+        console.log('text: ', text);
+
+        var textLowerCase = text.toLowerCase();     // убираем верхний регистр
+        console.log('textLowerCase: ', textLowerCase);
+
+        var arr = textLowerCase.split('');         // превращаем текст в массив букв и пробелов
+        console.log('arr: ', arr);
+
+        var textArray = new Array();               // исключаем пробелы
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] !== ' ') {
+                textArray[i] = arr[i];
+            };           
+        }
+        console.log('textArray: ', textArray);
+
+        var averseText = textArray.join('');      // массив без пробелов превращаем в строку для сравнения
+
+        var reversArray = textArray.reverse();    // делаем обратный массив без пробелов
+        console.log('reversArray: ', reversArray);
+
+        var reverseText = textArray.join('');      // обратный массив без пробелов преврашаем в строку для сравнения
+
+        console.log('averseText: ', averseText);   // выводим обе строки для наглядности
+        console.log('reverseText: ', reverseText);
+
+        if (averseText === reverseText) {          // сравниваем строки
+            console.log('is palindrom');
+            alert(text + ' - is palindrom');
+        } else {
+            console.log('is not palindrom');
+            alert(text + ' - is not palindrom');   
+        };
+    
+    </script>
+</body>
+</html>
