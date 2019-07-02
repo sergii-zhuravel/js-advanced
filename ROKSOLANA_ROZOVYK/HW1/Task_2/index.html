@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 2</title>
+    <script src="main.js"></script>
+    <style>
+        div{
+            text-align: center;
+            width: 333px;
+        }
+        input{
+            width: 80px;
+        }
+       .input{
+           text-align: center;
+       }
+       .output{
+          margin-top: 10px; 
+          margin-bottom: 10px; 
+          border: 1px solid black;
+          height: 50px;
+       }
+       .buttons{
+
+       }
+    </style>
+</head>
+<body>
+    <div class="input">
+        <p>Input two numbers to work with</p>
+        <input type="number" id="firstNumber" onchange="setNumbers()">
+        <input type="number" id="secondNumber" onchange="setNumbers()">
+    </div>
+    <div class="output"><p id="result"></p></div>
+    <div class="buttons">
+        <button id="add" onclick="Add()">+</button>
+        <button id="subtr" onclick="Subtr()">-</button>
+        <button id="mult" onclick="Mult()">×</button>
+        <button id="div" onclick="Div()">÷</button>
+    </div>
+</body>
+</html>
