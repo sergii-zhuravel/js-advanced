@@ -13,9 +13,9 @@
         do {
             var number = +prompt('input number');
             var n = number % 2;
-            if (n == 0) {
-                console.log('even');
-            } else console.log('odd')
+            if (Boolean(n)) {
+                console.log('odd');
+            } else console.log('even')
         } while (isNaN(+number))
  
     </script>
