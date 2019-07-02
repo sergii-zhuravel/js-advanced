@@ -1,5 +1,9 @@
 let numbUser = +prompt("Write number");
 
-if(numbUser % 2 == 0)
-  alert("Number is even");
-else alert("Number is odd");
+if(typeof(numbUser) == Number)
+{
+    if( numbUser % 2 == 0)
+       console.log("Number is even");
+    else console.log("Number is odd");
+}
+else console.log("It is not a number");
