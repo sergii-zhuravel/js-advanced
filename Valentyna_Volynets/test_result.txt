@@ -1,1 +1,18 @@
 My result:
+
+HTML Quiz
+Result:
+35 of 40
+87%
+
+
+CSS Quiz
+Result:
+23 of 25
+92%
+
+
+JavaScript Quiz
+Result:
+23 of 25
+92%
