@@ -1,1 +1,4 @@
 My results:
+HTML - 32 (80%)
+CSS - 22 (88%)
+JS - 21 (84%)
