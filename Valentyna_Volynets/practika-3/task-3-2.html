@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+--------------------------------------------------
+Задача 1.1
+--------------------------------------------------
+Создайте объект calculator с тремя методами:
+
+read() запрашивает prompt два значения и сохраняет их как свойства объекта
+sum() возвращает сумму этих двух значений
+mul() возвращает произведение этих двух значений
+
+--------------------------------------------------
+Задача 1.2
+--------------------------------------------------
+Есть объект «Персонаж» character:
+
+var character = {
+  step: 0,
+  up: function() { // вверх
+    this.step++;
+  },
+  down: function() { // вниз
+    this.step--;
+  },
+  showPosition: function() { // вывести текущую позицию
+    console.log( this.step );
+  }
+};
+
+Сейчас, если нужно последовательно вызвать несколько методов объекта, это можно сделать так:
+
+character.up();
+character.up();
+character.down();
+character.showPosition(); // 1
+
+Модифицируйте код методов объекта, чтобы вызовы можно было делать цепочкой, вот так:
+
+character.up().up().down().up().down().showPosition(); // 1
+Как видно, такая запись содержит «меньше букв» и может быть более наглядной.
+
+Такой подход называется «чейнинг» (chaining) и используется, например, во фреймворке jQuery.
+-->
+
+
+
+
+    <script>
+    var character = {
+        step: 0,
+        up: function() { // вверх
+            this.step++;
+            return this;
+        },
+        down: function() { // вниз
+            this.step--;
+            return this;
+        },
+        showPosition: function() { // вывести текущую позицию
+            console.log( this.step );
+
+        }
+    };
+
+    // character.up().up().down().up().down().showPosition(); // 1
+
+    // character.up().down().showPosition(); // если строка есть выше, то значение расситывается от вышестоящего результата 
+
+    // character.up().down().down().showPosition();
+
+
+    character.down().up().down().down().down().showPosition();  // -3
+
+    
+
+
+    
+    
+    </script>
+</body>
+</html>

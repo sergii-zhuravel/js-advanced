@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+------------------------
+Задача 3.2
+------------------------
+Написать функцию applyAll(func, arg1, arg2...), которая получает функцию func и произвольное количество аргументов.
+
+Она должна вызвать func(arg1, arg2...), то есть передать в func все аргументы, начиная со второго, и возвратить результат.
+
+Например:
+
+// Применить Math.max к аргументам 2, -2, 3
+console.log( applyAll(Math.max, 2, -2, 3) ); // 3
+
+// Применить Math.min к аргументам 2, -2, 3
+alert( applyAll(Math.min, 2, -2, 3) ); // -2
+Область применения applyAll, конечно, шире, можно вызывать её и со своими функциями:
+
+function sum() {         // суммирует аргументы: sum(1,2,3) = 6
+  return [].reduce.call(arguments, function(a, b) {
+    return a + b;
+  });
+}
+
+function mul() { // перемножает аргументы: mul(2,3,4) = 24
+  return [].reduce.call(arguments, function(a, b) {
+    return a * b;
+  });
+}
+
+console.log( applyAll(sum, 1, 2, 3) ); // -> sum(1, 2, 3) = 6
+console.log( applyAll(mul, 2, 3, 4) ); // -> mul(2, 3, 4) = 24
+-->
+
+<script>
+  
+  function sum() {
+    return [].reduce.call(arguments, function(a, b) {  // reduce отбирает аргумент слева по одному и сохраняет промежуточное значение
+      return a + b;                                    // прибавляет их к предыдущему результату
+    });
+  };
+  console.log( applyAll(sum, 1, 2, 3, 4)); // 10
+
+  function sub() {
+    return [].reduce.call(arguments, function(a,b) {
+      return a - b;
+    });
+  };
+  console.log( applyAll(sub, 5, 2, 1)); // 2
+
+  function mul() {
+    return [].reduce.call(arguments, function(a, b) {
+      return a * b;
+    });
+  };
+  console.log( applyAll(mul, 2, 3, 4) ); // 24
+
+  function dev() {
+    return [].reduce.call(arguments, function(a, b) {
+      return a / b;
+    });
+  };
+  console.log( applyAll(dev, 8, 2, 4)); // 1
+
+  function applyAll(func) {
+      return func.apply(this, [].slice.call(arguments, 1));  // подставлет вместо this указанную функцию (sum, sub, mul, dev) и подставляет в нее отсеченные аргументы
+  };
+
+  // console.log( applyAll(Math.max, 2, -2, 3) ); // 3
+  // console.log( applyAll(Math.min, 2, -2, 3) ); // -2
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+------------------------
+Задача 3.1
+------------------------
+Создать "Класс"/функцию конструктор с 3 полями и 2мя методами которые работают с this
+
+Описание класса:
+
+Pizza
+ - toppings []
+ - bortik Boolean
+ - size String
+ - makePizza (return a string that lists all Pizza fields in format - "{size} Pizza with {bortik} and with toppings {toppings})
+ - packPizza (return a string like "Pizza packed into {size}box)
+
+ Подумайте и предложите как можно улучшить модель/абстракцию
+
+ Создайте 2 пиццы - одну с разными топингами, одну с бортиком и одну без.
+ Пример создания пиццы: var myPizza = new Pizza(['onion', 'bekon', 'tomato'], true, 'big')
+
+ Вызовите методы у созданных обьектов.
+
+-->
+
+<script>
+  function Pizza(name, toppings, bortik, size) {
+    this.name = name;
+    this.toppings = toppings;
+    this.bortik = bortik;
+    this.size = size;
+    this.makePizza = function() {
+      return this.size + ' pizza "' + this.name + '" with bortik (' + this.bortik + ') and with toppings: ' + this.toppings;
+    };
+    this.packPizza = function() {
+      return 'Pizza packed into ' + this.size + ' box';
+    };
+  };
+  
+  var myPizza1 = new Pizza('Americana', ['onion', 'bekon', 'ham', 'tomato'], true, 'Big')
+  // console.log(myPizza1);
+  console.log(myPizza1.makePizza());
+  console.log(myPizza1.packPizza());
+
+  var myPizza2 = new Pizza('Hawaiian', ['mozzarella', 'pineapple', 'chicken'], false, 'Medium')
+  // console.log(myPizza2);
+  console.log(myPizza2.makePizza());
+  console.log(myPizza2.packPizza());
+
+</script>
+
+</body>
+</html>
