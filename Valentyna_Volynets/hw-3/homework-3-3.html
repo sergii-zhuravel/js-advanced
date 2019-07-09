@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+------------------------
+Задача 3.3
+------------------------
+
+Привести пример использования привязки контекста с помощью call/apply/bind
+-->
+    <script>
+        
+        // function LateBloomer() {
+        //     return this.petalCount = Math.ceil(Math.random() * 12) + 1;
+        // };
+        // // console.log('petalCount = ', LateBloomer());
+
+        // // Объявляем цветение с задержкой в 1 секунду
+        // // LateBloomer.prototype.bloom = function() {
+        // //     window.setTimeout(this.declare.bind(this), 1000);
+        // // };
+        // // console.log(LateBloomer.prototype.bloom)
+
+        // LateBloomer.prototype.declare = function() {
+        //     console.log('Я прекрасный цветок с ' + this.petalCount + ' лепестками!');
+        // };
+        // console.log(LateBloomer.prototype.declare());
+
+        var user1 = {
+            firstName: 'Ivan',
+            secondName: 'Ivanenko',
+            age: 35,
+            position: 'director',
+            salary: 1200,
+            experience: ['engineer', 'manager', 'director']
+        }
+
+        var user2 = {
+            firstName: 'Petro',
+            secondName: 'Petrenko',
+            age: 27,
+            position: 'manager',
+            salary: 800,
+            experience: ['courier', 'secretary', 'manager']
+        }
+
+        var user3 = {
+            firstName: 'Roman',
+            secondName: 'Romanenko',
+            age: 45,
+            position: 'lower',
+            salary: 1000,
+            experience: ['secretary', 'junior-lower']
+        }
+
+        // ------------ call -----------------
+        console.log('-- call-1 --');
+        function showFullName() {
+            console.log(this.firstName + ' ' + this.secondName);
+        }
+        showFullName.call(user1);
+        showFullName.call(user2);
+        showFullName.call(user3);
+
+        console.log('-- call-2 --');
+        function showVacance() {
+            console.log(this.position + ', ' + this.salary);
+        }
+        showVacance.call(user1);
+        showVacance.call(user2);
+        showVacance.call(user3);
+
+        // ------------ apply -----------------
+        console.log('-- apply --');
+        function showExperience() {
+            console.log(this.firstName + ' ' + this.secondName + ' has experience: ' + this.experience)
+        }
+        showExperience.apply(user1);
+        showExperience.apply(user2);
+        showExperience.apply(user3);
+
+        // ------------ bind -----------------
+        console.log('-- bind --');
+        console.log('We need:');
+
+        var result = showVacance.bind(user1);
+        var resultNeed = result();
+
+        var result = showVacance.bind(user2);
+        var resultNeed = result();
+
+        var result = showVacance.bind(user3);
+        var resultNeed = result();
+
+    </script>
+
+</body>
+</html>
