@@ -1,14 +1,45 @@
 ------------------------
 Задача 4.1
 ------------------------
-Написать функцию makeAdder(n) которая получает целое число и возвращает функцию которая увеличивает переданный ей
-параметр на заданное заранее значение (использовать замыкание)
+Написать функцию makeAdder(arr) которая получает целое число и возвращает функцию которая увеличивает переданный ей
+массив чисел (каждое елемент массива отдельно) на заданное заранее значение (использовать замыкание)
 
 Пример вызова функций:
 var add10 = makeAdder(10)
-console.log(add10(25)) // должно вывести 35
+console.log(add10([10, 20, 30])) // должно вывести  [20, 30, 40]
+
 ------------------------
 Задача 4.2
 ------------------------
 1) Создать иерархию объектов с помощью прототипного наследования (3 уровня)
-2) Создать туже самую цепочку насследования но с помощью ES6 классов
+
+Пример:
+
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.sayHi = function() {
+    console.log('Hello, Im ' + this.name);
+}
+
+function Student(name) {
+    this.name = name;
+    this.myCourses = [];
+}
+
+// Создаем ссьілку на проторип
+Student.prototype = Object.create(new Person()); // функция Object.create требует обьект, поєтому мьі создаем єкземпляр new Animal()
+
+Student.prototype.getTheCourse = function(courseName) {
+    this.myCourses = this.myCourses.concat(courseName);
+}
+
+Student.prototype.listTheCourses = function() {
+    console.log("I have such courses: " + this.myCourses);
+}
+
+var Ivan = new Student('Ivan');
+Ivan.sayHi(); // Hello, Im Ivan
+Ivan.getTheCourse('JS Advanced');
+Ivan.listTheCourses(); // I have such courses: JS Advanced
