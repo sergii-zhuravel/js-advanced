@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--     ------------------------
+Задача 3.1
+------------------------
+Создать "Класс"/функцию конструктор с 3 полями и 2мя методами которые работают с this
+
+Описание класса:
+
+Pizza
+ - toppings []
+ - bortik Boolean
+ - size String
+ - makePizza (return a string that lists all Pizza fields in format - "{size} Pizza with {bortik} and with toppings {toppings})
+ - packPizza (return a string like "Pizza packed into {size}box)
+
+ Подумайте и предложите как можно улучшить модель/абстракцию
+
+ Создайте 2 пиццы - одну с разными топингами, одну с бортиком и одну без.
+ Пример создания пиццы: var myPizza = new Pizza(['onion', 'bekon', 'tomato'], true, 'big')
+
+ Вызовите методы у созданных обьектов. -->
+ 
+
+    
+ <script>
+
+     // bortik = rim 
+
+     function PizzaMaker (toppings, rim, size) {
+        this.toppings = [];
+        this.rim = rim;
+        this.size = size;
+        this.pizzaToppings = {
+                    mozzarella: 20,
+                    feta: 22,
+                    chicken: 21,
+                    bacon: 30, 
+                    ham: 35,
+                    pepperoni: 22,
+                    sweetcorn: 12,
+                    olives: 15,
+                    onions: 10,
+                    pinaples: 25, 
+                };
+        this.availableSizes = {
+                    xs: 30,
+                    sm: 40,
+                    m: 60,
+                    lg: 80, 
+                    hg: 100
+        },
+        this.sizeNames = {
+            xs: 'extra small',
+            sm: 'small', 
+            m: 'middlesized',
+            lg: 'large',
+            hg: 'huge'
+        }
+        this.addToppings = function () {
+            let topping;
+                for (i = 0; i < 6; i++) {
+                    topping = prompt("What toppings would you like to try? Youe options are: mozzarella, feta, chicken, bacon, ham, sweetcorn, olives, onions, pinaples. You can choose up to 6 in one go.");
+                    if(this.pizzaToppings[topping]) {
+                        this.toppings.push(topping);
+                    } else {
+                        alert('You have inserted a wrong topping name, please try again!');
+                        topping = prompt("What toppings would you like to try? Youe options are: mozzarella, feta, chicken, bacon, ham, sweetcorn, olives, onions, pinaples. You can choose up to 6 in one go.");
+                    }
+                }
+                if(this.toppings.length = 6) {
+                    return this.toppings;
+                }
+            },
+        this.sizeOfPizza = function () {
+                let size = prompt('Please insert pizza size. Your options are: xs - 20sm, sm - 25sm, m - 30sm, lg - 36sm, hg - 42sm');
+                if(this.availableSizes[size]) {
+                    this.size = size;
+                } else {
+                    alert('Please insert correct size identifier!');
+                    size = prompt('Please insert pizza size. Your options are: xs - 20sm, sm - 25sm, m - 30sm, lg - 36sm, hg - 42sm');
+                }
+            };
+        this.hasBorder = function () {
+                let rim = prompt ('Should your pizza have a crusty rim? yes/no');
+                if (rim == 'yes') {
+                    this.rim = true;
+                } else if (rim = 'no') {
+                    this.rim = false;
+                } else {
+                    alert('Please, say yes or no!');
+                    rim = prompt ('Should your pizza have a crusty border? yes/no');
+                }
+            };
+        this.makePizza = function() {
+            this.addToppings();
+            this.sizeOfPizza();
+            this.hasBorder();
+            console.log(this.toppings, this.rim, this.size);
+            alert(`So, your pizza is ${this.sizeNames[this.size]}, ${this.rim ? "with" : "without"} a crusy rim. Your toppings are ${this.toppings.join(', ')}`);
+            let agreeOnPizza;
+            agreeOnPizza = prompt("Would you like to know it's price? (yes - get the price of a pizza, no - to redesign");
+            if(agreeOnPizza) {
+                
+            } 
+        }
+/*         calculatePrice = function () {
+            let base = 30; 
+            let sause = 20;
+            let price = base + sause + this.toppings.map(function(el) {
+                return this.pizzaToppings[el];
+            }).reduce(function())
+        } */
+     }
+    let havaian = new PizzaMaker;
+    havaian.makePizza()
+ </script>
+</body>
+</html>
