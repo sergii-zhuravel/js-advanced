@@ -106,21 +106,36 @@ Pizza
             console.log(this.toppings, this.rim, this.size);
             alert(`So, your pizza is ${this.sizeNames[this.size]}, ${this.rim ? "with" : "without"} a crusy rim. Your toppings are ${this.toppings.join(', ')}`);
             let agreeOnPizza;
-            agreeOnPizza = prompt("Would you like to know it's price? (yes - get the price of a pizza, no - to redesign");
-            if(agreeOnPizza) {
-                
-            } 
+            agreeOnPizza = prompt("Would you like to know it's price? (yes - get the price of a pizza, no - to your order!");
+            if(agreeOnPizza == 'yes') {
+                this.calculatePrice();
+            } else {
+                this.packPizza();
+            }
         }
-/*         calculatePrice = function () {
+        this.calculatePrice = function () {
             let base = 30; 
             let sause = 20;
-            let price = base + sause + this.toppings.map(function(el) {
-                return this.pizzaToppings[el];
-            }).reduce(function())
-        } */
+            let priceArr = [];
+            for(let i = 0; i < this.toppings.length; i++) {
+                priceArr.push(this.pizzaToppings[this.toppings[i]]); // .map didn't work...
+            }
+            let sum = base + sause + priceArr.reduce((a, b) => {
+                return a + b;
+                }) + this.availableSizes[this.size] + ((this.rim) ? 15 : 0);
+            console.log(sum);
+            alert (`The cost of your pizza is ${sum} Uah`);
+        }
+        this.packPizza = function() {
+            alert (`Your pizza has been packed into a ${this.sizeNames[this.size]} box`);
+        }
      }
-    let havaian = new PizzaMaker;
-    havaian.makePizza()
+    let havaian = new PizzaMaker; // You can add any toppings/rims you like
+    havaian.makePizza();
+    havaian.packPizza(); 
+    let pepperoni = new PizzaMaker;
+    pepperoni.makePizza();
+    pepperoni.packPizza();
  </script>
 </body>
 </html>

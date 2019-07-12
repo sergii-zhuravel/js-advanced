@@ -10,9 +10,11 @@
 <!--     ------------------------
 Задача 3.2
 ------------------------
-Написать функцию applyAll(func, arg1, arg2...), которая получает функцию func и произвольное количество аргументов.
+Написать функцию applyAll(func, arg1, arg2...), 
+которая получает функцию func и произвольное количество аргументов.
 
-Она должна вызвать func(arg1, arg2...), то есть передать в func все аргументы, начиная со второго, и возвратить результат.
+Она должна вызвать func(arg1, arg2...), 
+то есть передать в func все аргументы, начиная со второго, и возвратить результат.
 
 Например:
 
@@ -41,6 +43,20 @@ console.log( applyAll(mul, 2, 3, 4) ); // -> mul(2, 3, 4) = 24
  -->
  <script>
  
+function applyAll (args) {
+	let arr = [].slice.call(arguments, 1); // "borrows" Array.slice method and then makes a new copy of an array and puts all the arguments into an array as elements
+	return args.apply(this, arr);
+}
+
+function applyAll2 (func, ...rest) {
+    cosnole.log(rest); // makes an array of arguments starting from second;
+    return func.apply(null,rest) // this object is null, inserts an array into Math.min
+}
+
+console.log(applyAll(Math.max, 2, -2, 3));
+console.log(applyAll2(Math.min, 2, -2, 3));
+
+
  </script>
 </body>
 </html>
