@@ -49,7 +49,7 @@ function applyAll (args) {
 }
 
 function applyAll2 (func, ...rest) {
-    cosnole.log(rest); // makes an array of arguments starting from second;
+    console.log(rest); // makes an array of arguments starting from second;
     return func.apply(null,rest) // this object is null, inserts an array into Math.min
 }
 
