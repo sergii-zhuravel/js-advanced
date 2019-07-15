@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-4-1</title>
+</head>
+<body>
+    <!-- 
+        ------------------------
+        Задача 4.1
+        ------------------------
+        Написать функцию makeAdder(arr) которая получает целое число и возвращает функцию которая увеличивает переданный ей массив чисел (каждое елемент массива отдельно) на заданное заранее значение использовать замыкание)
+
+        Пример вызова функций:
+        var add10 = makeAdder(10)
+        console.log(add10([10, 20, 30])) // должно вывести  [20, 30, 40]
+
+        -------------------------------------
+        пример решения для числа:
+        function adder(a) {
+            return function(b) { 
+                return a + b;
+            }
+        }
+        console.log('adder(5)')
+        var myAdder5 = adder(5);
+        console.log(myAdder5(10)); // 10+5=15
+        console.log(myAdder5(30)); //30+5=35
+     -->
+
+    <script>
+        
+        function makeAdder(n) {
+            return function adder(arr) {
+                for (var i = 0; i < arr.length; i++) {
+                    arr[i] = arr[i] + n;
+                }
+                return arr;       
+            }
+        }
+        var add10 = makeAdder(10);
+        console.log(add10([10, 20, 30])); // должно вывести  [20, 30, 40] 
+        
+        var add5 = makeAdder(5);
+        console.log(add5([10, 20, 30])); // должно вывести  [15, 25, 35] 
+    
+    </script>
+    
+</body>
+</html>

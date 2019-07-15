@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lesson-4</title>
+</head>
+<body>
+    
+    <script>
+        
+        function getPrototypeChain(o) {
+            if (o === null) {
+                return 'null';
+            } 
+            return typeof(o) + ' > ' +  getPrototypeChain(o.__proto__);
+        }
+        console.log(getPrototypeChain(Object));
+        
+    </script>
+</body>
+</html>
