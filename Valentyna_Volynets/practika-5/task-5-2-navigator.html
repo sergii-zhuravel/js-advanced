@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <div>Покупки:</div>
+  <ul>
+    <li>Хлеб</li>
+    <li>Масло</li>
+  </ul>
+
+  <!-- --------------------------------------------------
+    Задача 2.1
+    --------------------------------------------------
+          Для страницы: -->
+
+  <script>
+    // ... ваш код 
+    var head1 = document.head;
+    console.log('1-1) head: ', head1);
+
+    var head2 = document.firstElementChild.firstElementChild;
+    console.log('1-2) head: ', head1);
+
+    var bbody = document.body;
+    console.log('2) body: ', bbody);
+    
+    var divv = document.body.firstElementChild;
+    console.log('3) div: ', divv);
+
+    var ull = document.body.firstElementChild.nextElementSibling;
+    console.log('4-1) ul: ', ull);
+
+    var ull2 = document.body.children[1];
+    console.log('4-2) ul: ', ull2);
+
+    var childrenn = document.body.children;
+    console.log('5) childrenn: ', childrenn)
+
+    var li21 = document.body.firstElementChild.nextElementSibling.lastElementChild;
+    console.log('6-1) li2: ', li21);
+
+    var li22 = document.body.children[1].children[1];
+    console.log('6-2) li2: ', li22);
+
+    var li23 = document.body.children[1].lastElementChild;
+    console.log('6-3) li2: ', li23);
+
+    // Напишите код, который получит элемент HEAD.
+    // Напишите код, который получит UL.
+    // Напишите код, который получит второй LI.
+
+  </script>
+
+</body>
+</html>
+
+

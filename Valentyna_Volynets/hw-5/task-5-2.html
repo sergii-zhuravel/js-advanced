@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 
+    ------------------------
+    Задача 5.2
+    ------------------------
+    Как получить доступ к стилям последнего элемента тега body?
+    Как проверить что в body вообще есть элементы?
+    (написать код)
+    -->
+
+    <style>
+        .test {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    
+    </style>
+
+    <div class="test" style="background: green">
+    </div>
+
+    <script>
+
+        // Как получить доступ к стилям последнего элемента тега body?
+        console.log('------ part-1 ----------');    
+
+        var lastElement = document.body.lastElementChild;
+        console.log('1) - lastElement: ', lastElement);
+
+        var styleLastElementChild = document.body.lastElementChild.style;   // список стилей элемента
+        console.log('2) - styleLastElementChild: ', styleLastElementChild);
+        console.log('');
+
+        //Как проверить что в body вообще есть элементы?  
+        console.log('------ part-2 ----------');
+ 
+        var childrenBodyElement = document.body.children;     
+        console.log('1) - childrenBodyElement: ', childrenBodyElement); 
+
+        var childElement = document.body.children[1];  // выбираем элемент
+        console.log('2) - childElement: ', childElement);
+
+        var styleChildElement = document.body.children[1].style;    //  проверяем свойства есть у элемента ( в перечне видно /cssText: "background: green;/")
+        console.log('3) - styleChildElement:', styleChildElement);
+
+        var styleChildElementBackground = document.body.children[1].style.backgroundColor;  // styleChildElementBackground:  green
+        console.log('4) - styleChildElementBackground: ', styleChildElementBackground)    // видит green, не видит red
+        console.log('');
+
+        var styleBody = getComputedStyle(document.body);  // проверяем стили body
+        console.log('5) - styleBody: ', styleBody);
+
+    </script>
+
+    <!-- 
+    <div class="test" style="background: green">       // этот элемент после  </script> - невидим, последний элемент body - script
+    </div> -->
+
+</body>
+</html>
