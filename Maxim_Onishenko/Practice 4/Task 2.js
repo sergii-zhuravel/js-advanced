@@ -1,5 +1,7 @@
-function adder(a,b){
-    return a+b;
+function adder(n){
+    return function (m){
+        return n + m;
+    }
 }
-let myAdder =adder.bind(null,5)
-myAdder(10)
+let myAdder = adder(5);
+myAdder(4)
