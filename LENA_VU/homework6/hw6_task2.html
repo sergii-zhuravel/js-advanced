@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test" style="height: 50px;background-color: lightblue;">Test Div</div>
+<p>Расчетные стили для test div: <br><span id="output"></span></p>
+
+<script>
+function myFunction(){
+    var elem = document.getElementById("test");
+    var txt;
+    var bg_color;
+    cssObj = window.getComputedStyle(elem);
+   
+
+    for (i = 0; i < cssObj.length; i++) {
+        
+        cssObjProp = cssObj.item(i);
+        txt += cssObjProp + " = " + cssObj.getPropertyValue(cssObjProp) + "<br>";
+    }
+
+    document.getElementById("output").innerHTML = txt;
+
+
+    
+    //Как получить расчетный стиль для фонового цвета у дива с id="test"?
+    bg_color=window.getComputedStyle(elem).getPropertyValue("background-color");
+
+}
+myFunction();
+
+
+
+
+</script>
+</body>
+</html>
