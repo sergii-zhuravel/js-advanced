@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div>
+        <span>Browser name: </span><span>BROWSERNAME</span>
+    </div>
+    <script>
+        document.body.firstElementChild.lastElementChild.innerText = navigator.appCodeName + "; " + navigator.appVersion;
+    </script>
+</body>
+</html>
