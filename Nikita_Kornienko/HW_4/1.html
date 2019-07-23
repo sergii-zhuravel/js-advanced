@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ------------------------
+Задача 4.1
+------------------------
+Написать функцию makeAdder(arr) которая получает целое число и возвращает функцию которая 
+увеличивает переданный ей
+массив чисел (каждое елемент массива отдельно) на заданное заранее значение 
+(использовать замыкание)
+
+Пример вызова функций:
+var add10 = makeAdder(10)
+console.log(add10([10, 20, 30])) // должно вывести  [20, 30, 40] -->
+
+<script>
+    function makeAdder (num) { // Outer function takes in a variable and stores in it's LexicalEnvironment
+        let add = num; 
+        return function (arr) { // returns a function that has a [[Scope]] property pointing to stil existing LexicalEnvironment of makeAdder() function
+            let newArr = arr.map((el) => { // runs through all the array elements
+                return el + add; // adds 10
+            });
+            return newArr; // returns an array with elements increased by the variable, currently in the outer function's LexicalEnvironment
+        }
+    }
+ 
+    var add10 = makeAdder(10); // sets the variable for the outer function
+    console.log(add10([10, 20, 30])); // sets up an array for the returned inner function
+</script>
+</body>
+</html>

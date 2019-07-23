@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--         ------------------------
+        Задача 3.3
+        ------------------------
+        
+        Привести пример использования привязки контекста с помощью call/apply/bind -->
+        
+    <script>
+    
+        var john = {
+            name: 'John',
+            age: 26, 
+            job: 'teacher',
+            discussion: function(arr1, arr2) {
+                console.log('Today we will discuss ' + arr1 + ' and ' + arr2);
+            },
+            presentation: function(style, timeOfDay) {
+                if (style === 'formal') {
+                    console.log('Good ' + timeOfDay + ' ladies and gentlemen. I\'m ' + this.name + ', I\'m a ' + this.job + ', I\'m ' + this.age + ' years old');
+                } else if (style === 'friendly') { 
+                    console.log('Hey, what\'s up!? I\'m ' + this.name + ', I\'m a ' + this.job + ', I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay + '!');
+                }
+            },
+        }
+
+        var emily = {
+            name: 'Emily',
+            age: 35, 
+            job: 'designer'
+        }
+
+        john.presentation('formal', 'morning');
+
+        john.presentation.call(emily, 'friendly', 'afternoon');
+        john.discussion.apply(emily, ['situation', 'consequences']);
+
+        // Currying with .bind() method))) 
+        var johnFriendly = john.presentation.bind(john, 'friendly');
+        var emilyFormal = john.presentation.bind(emily, 'formal');
+        johnFriendly('morning');
+        johnFriendly('night');
+        emilyFormal('night')
+    </script>
+    
+</body>
+</html>
