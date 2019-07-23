@@ -1,0 +1,40 @@
+<div>
+    <input id="todo-input" value="Placeholder" /> <button id="button-add">Add</button>
+    <p>ToDo List:</p>
+    <ol id="todo-list">
+        <li class="todo-item">
+            First todo
+            <span class="delete-button" onclick="removeItem(event)" title="Delete current item"> X</span>
+        </li>
+    </ol>
+</div>
+<script type="text/javascript">
+  const button = document.getElementById('button-add');
+
+  button.addEventListener("click", function(){
+    //  1. Найдет todo-input и получит значение введенное в поле
+    const todoInput = document.querySelector('#todo-input');
+    const todoValue = todoInput.value; // value ??
+
+    //  2. Найдет элемент li;
+    const liELem = document.querySelector('li');
+    //  3. Создаст deep клон элемента li;
+    const liClone = liELem.cloneNode(true); // true усли child ноды тоже нужно клонировать
+    //  4. Поменять только текст у клона элемента li
+    liClone.firstChild.textContent = todoValue;
+    liELem.parentElement.appendChild(liClone);
+  });
+
+  function removeItem(event){
+    let list = document.getElementById('todo-list');
+    list.childNodes.forEach(node => {
+      // alert(node.innerHTML)
+    })
+    if (list.childNodes.length > 3){ // 3 ноды. Перенос строки ради читаемости кода воспринимается как нода.
+      event.target.parentElement.remove();
+      return "parent element was removed"
+    }
+
+
+  }
+</script>
