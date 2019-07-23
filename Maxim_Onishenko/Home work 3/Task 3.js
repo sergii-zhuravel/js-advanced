@@ -38,3 +38,6 @@ bindedPhone = ladyOne.alertPhoneNum.bind(ladyOne)();
 ladyOne.phoneNum = null;
 
 setTimeout(bindedPhone, 100);
+
+
+Array.from(pseaudoArray)
