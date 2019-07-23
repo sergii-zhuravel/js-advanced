@@ -19,16 +19,8 @@
 // Для тестирования классов:
 // создать єкземпляр класса  Button и вьізвать у него методьі render и clickMe
 
-class Button {
-  constructor() {}
-  clickMe() {
-    console.log("Im clicked");
-  }
-}
-
-class UIComponent extends Button {
+class UIComponent {
   constructor(name) {
-    super();
     this.name = name;
     this.attribute = [];
     this.content = "";
@@ -53,8 +45,14 @@ class UIComponent extends Button {
   }
 }
 
-let a = new UIComponent("div");
-a.setAtributt("id", "test2");
-a.setContent("Новый элемент");
-a.render("p");
-a.clickMe();
+class Button extends UIComponent {
+  clickMe() {
+    console.log("I'm clicked");
+  }
+}
+
+let newEl = new Button("div");
+newEl.setAtributt("id", "test2");
+newEl.setContent("Новый элемент");
+newEl.render("p");
+newEl.clickMe();
