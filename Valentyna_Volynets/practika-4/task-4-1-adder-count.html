@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // -----------task-1--------------
+      console.log("------task-1-1");
+
+      function sum() {
+        var arr = new Array().slice.call(arguments); // - через массив
+
+        var sum = 0;
+        for (var i = 0; i < arr.length; i++) {
+          sum += arr[i];
+        }
+        return sum;
+      }
+      var arr = [1, 2, 4];
+      sum();
+      console.log(sum(1, 2, 4)); // 7
+
+      console.log("------task-1-2");
+
+      function sum() {
+        var sum = 0;
+        for (var i = 0; i < arguments.length; i++) {
+          sum += arguments[i];
+        }
+        return sum;
+      }
+      console.log(sum(1, 2, 3)); // 6
+      console.log(sum(2, 4, 6)); // 12
+      console.log(sum(5, 3)); // 8
+
+      // -----------task-2---------
+      console.log("------task-2");
+
+      function adder(a) {
+        return function(b) {
+          return a + b;
+        };
+      }
+      var myAdder = adder(5);
+      console.log(myAdder(5));
+      console.log(myAdder(10));
+      console.log(myAdder(20));
+
+      console.log("adder(5)");
+      var myAdder5 = adder(5);
+      console.log(myAdder5(10)); // 10+5=15
+      console.log(myAdder5(30)); //30+5=35
+
+      console.log("adder(10)");
+      var myAdder10 = adder(10);
+      console.log(myAdder10(10)); // 10+10=20
+      console.log(myAdder10(30)); //30+10=40
+
+      // -------------task-3------------
+      console.log("------task-3");
+      function makeCounter(n) {
+        return function() {
+          return ++n;
+        };
+      }
+      var myCounter = new makeCounter(1);
+      console.log(myCounter()); //1+1=2
+
+      var myCounter = new makeCounter(5);
+      console.log(myCounter()); //1+5=6
+    </script>
+  </body>
+</html>

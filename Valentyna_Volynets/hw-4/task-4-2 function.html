@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task-4-2-function</title>
+</head>
+<body>
+    <!-- 
+        ------------------------
+        Задача 4.2
+        ------------------------
+        1) Создать иерархию объектов с помощью прототипного наследования (3 уровня)
+
+        Пример:
+
+        function Person(name) {
+            this.name = name;
+        }
+
+        Person.prototype.sayHi = function() {
+            console.log('Hello, Im ' + this.name);
+        }
+
+        function Student(name) {
+            this.name = name;
+            this.myCourses = [];
+        }
+
+        // Создаем ссьілку на проторип
+        Student.prototype = Object.create(new Person()); // функция Object.create требует обьект, поєтому мьі создаем єкземпляр new Animal()
+
+        Student.prototype.getTheCourse = function(courseName) {
+            this.myCourses = this.myCourses.concat(courseName);
+        }
+
+        Student.prototype.listTheCourses = function() {
+            console.log("I have such courses: " + this.myCourses);
+        }
+
+        var Ivan = new Student('Ivan');
+        Ivan.sayHi(); // Hello, Im Ivan
+        Ivan.getTheCourse('JS Advanced');
+        Ivan.listTheCourses(); // I have such courses: JS Advanced
+     -->
+
+
+    <script>
+
+        //-----part-1-----
+        console.log('------part-1--------')
+        function Person(name, secondName) {
+            this.name = name;
+            this.secondName = secondName;
+        }
+
+        // создаем метод для Person
+        Person.prototype.fullName = function () {
+            console.log('I am ' + this.name + ' ' + this.secondName);
+        }
+        var Ivan = new Person ('Ivan', 'Ivanov');
+        console.log(Ivan);
+       
+        //-----part-2-----
+        console.log('------part-2--------')
+        function Pupil(name, secondName) {
+            this.name = name;
+            this.secondName = secondName;
+            this.schoolEducation = [];
+        }
+
+        // Создаем ссылку для Pupil на проторип Person
+        Pupil.prototype = Object.create(new Person());
+
+        // создаем методы для Pupil
+        Pupil.prototype.getSchoolEducation = function(school) {
+            this.schoolEducation = this.schoolEducation.concat(school);
+        }
+        Pupil.prototype.showSchoolEducation = function() {
+            console.log('My schoolEducation: ' +  this.schoolEducation);
+        }
+        
+        //создаем объект 
+        var IvanPupil = new Pupil('Ivan', 'Ivanov');
+
+        IvanPupil.getSchoolEducation(' School_№5 (1-4 classes)');
+        IvanPupil.getSchoolEducation(' Math_gimnasium (5-7 classes)');
+        IvanPupil.getSchoolEducation(' Technical_lyceum (8-9 classes)');
+        console.log(IvanPupil);
+       
+       //-----part-3-----
+       console.log('------part-3--------')
+        function Student(name, secondName, schoolEducation) {
+            this.name = name;
+            this.secondName = secondName;
+            this.schoolEducation = schoolEducation;
+            this.universityEducation = [];
+        }
+
+        // Создаем ссылку для Student на проторип Pupil
+        Student.prototype = Object.create(new Pupil);
+
+        // создаем методы для Student
+        Student.prototype.getUniversityEducation = function(university) {
+            this.universityEducation = this.universityEducation.concat(university);
+        }
+        Student.prototype.showUniversityEducation = function() {
+            console.log('My universityEducation: ' + this.universityEducation + this.schoolEducation );
+        }
+
+        //создаем объект 
+        var IvanStudent = new Student('Ivan', 'Ivanov');
+
+        IvanStudent.getSchoolEducation(' School_№5 (1-4 classes)');
+        IvanStudent.getSchoolEducation(' Math_gimnasium (5-7 classes)');
+        IvanStudent.getSchoolEducation(' Technical_lyceum (8-9 classes)');
+
+        IvanStudent.getUniversityEducation(' Kollege_KPI');
+        IvanStudent.getUniversityEducation(' Technical_Institute_KPI');
+        
+        IvanStudent.fullName();
+        IvanStudent.showSchoolEducation();
+        IvanStudent.showUniversityEducation();
+        console.log(IvanStudent);
+   
+    </script>
+</body>
+</html>
