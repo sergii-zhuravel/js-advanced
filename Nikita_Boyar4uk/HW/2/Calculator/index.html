@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Калькулятор</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="reset.css" />
+  </head>
+  <body>
+    <div id="calc">
+      <div class="tittle">
+        <h1>Результат:</h1>
+        <h1 id="resoult">0</h1>
+      </div>
+      <div class="numbers">
+        <p>Значение 1</p>
+        <input id="input1" type="text" value="2" />
+        <p>Значение 2</p>
+        <input id="input2" type="text" value="3" />
+      </div>
+      <div class="keyboard">
+        <div data-action="plus" class="keyboard__button">+</div>
+        <div data-action="minus" class="keyboard__button">-</div>
+        <div data-action="mult" class="keyboard__button">*</div>
+        <div data-action="divide" class="keyboard__button">/</div>
+        <script src="script.js"></script>
+      </div>
+    </div>
+  </body>
+</html>
