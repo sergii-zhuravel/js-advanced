@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<!-- 
+--------------------------------------------------
+Задача 1.1
+--------------------------------------------------
+Вывести в консоль ключи и их значения обьектов BOM: navigator, location, history
+
+Написать код которьій вьіведет значения в таком формате:
+key : value
+
+--------------------------------------------------
+Задача 1.2
+--------------------------------------------------
+Создать обьект с методами goTop, goBottom, goReverse
+
+методьі должньі использовать свойство обьекта position  и вьіполнять кроллирование страницьі
+
+
+ES6 Class Scroller
+Constructor with 1 parameter - initialPosition
+position - string value ('top' or 'bottom') or 1/0
+goReverse - берем значение position - меняем его на обратное и склолим на результат
+
+ -->
+
+
+
+    <script>
+ 
+        // ---- part-1 - object------
+        var scroller = {
+            position: 'top',
+
+            goTop() {
+                window.scrollTo(0, 0);
+                this.position = 'top';
+            },
+
+            goBottom() {    
+                window.scrollTo(0, document.body.scrollHeight);
+                this.position = 'bottom';
+            },
+
+            goReverse() {
+                if (this.position === 'top') {
+                    this.goBottom();
+                } else {
+                    this.goTop();
+                }
+            }
+        }
+
+        // ---- part-2 - function------
+
+        function Scroller(initialPosition) {
+            this.position = initialPosition;
+        }
+
+        Scroller.prototype.goTop = function() {
+            window.scrollTo(0, 0);
+            this.position = 'top';
+        }
+
+        Scroller.prototype.goBottom = function() {
+            window.scrollTo(0, document.body.scrollHeight);
+            this.position = 'bottom';
+        }
+
+        Scroller.prototype.goReverse = function() {
+            if (this.position === 'top') {
+                this.goBottom();
+            } else {
+                this.goTop();
+            }
+        }
+
+        var scroll = new Scroller('top');
+
+
+        // ---- part-3 - object------ сделать проверить goBotoom!!!!
+
+        class Scroller {
+            constructor(initialPosition) {
+                this.position = initialPosition;
+            }
+
+            goTop() {
+                window.scrollTo(0, 0);
+                this.position = 'top';
+            }
+
+            goBottom() {    
+                window.scrollTo(0, document.body.scrollHeight);
+                this.position = 'bottom';
+            }
+
+            goReverse = function() {
+                if (this.position === 'top') {
+                    this.goBottom();
+                } else {
+                    this.goTop();
+                }
+            }
+        }
+        var scroll = new Scroller('top');
+
+       
+        
+    </script>
+</body>
+</html>
