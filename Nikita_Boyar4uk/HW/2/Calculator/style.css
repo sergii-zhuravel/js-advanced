@@ -1,0 +1,69 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #aaa69d;
+  height: 100vh;
+}
+
+#calc {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 5% auto;
+  background-color: #f7f1e3;
+  padding: 10px;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+#resoult {
+  background: #cc8e35;
+}
+
+.tittle {
+  text-align: center;
+  font-size: 1.5em;
+  color: black;
+  display: inline-block;
+  height: 20%;
+}
+
+.numbers {
+  display: grid;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  margin: 0 auto;
+  -webkit-border-radius: 7px;
+  margin-bottom: 5px;
+  height: 100%;
+}
+
+.numbers p {
+  text-align: center;
+  padding: 10px;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.keyboard__button {
+  text-align: center;
+  font-size: 2.5em;
+  background-color: #ffb142;
+  margin: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  border-bottom: 4px solid sandybrown;
+}
+
+.keyboard__button:hover {
+  background-color: #cc8e35;
+}
