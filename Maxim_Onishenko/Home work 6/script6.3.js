@@ -22,39 +22,37 @@ clickMe() {
 создать єкземпляр класса  Button и вьізвать у него методьі render и clickMe
 */
 
-class UIComponent{
-constructor(name){
+class UIComponent {
+  constructor(name) {
     this.name = name;
     this.attributes = [];
-    this.content = null; 
-}
-setAttribute(attr){
-    this.attributes.push(attr)
-    return this.attributes;
-}
+    this.content = null; //!!! Для текста по умолчанию лучше ''
+  }
+  setAttribute(attr) {
+    this.attributes.push(attr);
+    return this.attributes; //!!! Зачем возвращать то что мьі передали?
+  }
 
-setContent(text){
+  setContent(text) {
     this.content = text;
-    return this.content;
-}
-render(elem){
+    return this.content; //!!! Зачем возвращать то что мьі передали?
+  }
+  render(elem) {
     let newElem = document.createElement(this.name);
     console.log(newElem);
     // this.attributes.forEach(function(item, i, arr) {
     //     console.log( i + ": " + item + " (массив:" + arr + ")" );
     //   });
     this.attributes.forEach(attr => {
-        newElem.setAttribute(attr.name, attr.value)
-    })  
-    
-    let node = document.createTextNode(this.content)
-    let parentElem = document.getElementsByTagName(elem)[0];
-    newElem.appendChild(node)
+      newElem.setAttribute(attr.name, attr.value);
+    });
+
+    let node = document.createTextNode(this.content);
+    let parentElem = document.getElementsByTagName(elem)[0]; // parent уже должен бьіть ссьілкой на обьект в DOM
+    newElem.appendChild(node);
     parentElem.appendChild(newElem);
-    console.log('new');
-    
-//    return newElem; //не  обязательно 
+    console.log("new");
 
+    //    return newElem; //не  обязательно
+  }
 }
-}
-

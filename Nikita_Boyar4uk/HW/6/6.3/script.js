@@ -39,7 +39,7 @@ class UIComponent {
       newElement.setAttribute(this.attribute[i].name, this.attribute[i].value);
     }
     newElement.textContent = this.content;
-    parent = document.querySelector(parent);
+    parent = document.querySelector(parent); //!!!! parent уже должен приходить ссьілкой на DOM елемент
     parent.appendChild(newElement);
     return newElement;
   }

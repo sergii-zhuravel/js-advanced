@@ -15,3 +15,7 @@ let a = document.body.children[0];
 if (a === undefined || a === null) {
   console.log("Element is empty");
 }
+
+//!!! Можно взять document.body.children (или document.body.childNodes для узлов) и проверить что массив длинной больше 0
+
+///!!! Еще есть element.hasChildNodes()

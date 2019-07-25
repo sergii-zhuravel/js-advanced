@@ -11,13 +11,13 @@ let Squere = function(height) {
   this.squere = height * height;
 };
 
-Squere.prototype = Object.create(Line.prototype);
+Squere.prototype = Object.create(Line.prototype); /// !!!! new Line()
 Squere.prototype.getSquere = function() {
   return this.squere;
 };
 
 let Cube = function(height) {
-  Squere.call(this, height, this.squere);
+  Squere.call(this, height, this.squere); //!!! Squere конструктор принимает только один параметр
   this.volume = Math.pow(this.height, 3);
   this.cubeSurfaceArea = this.squere * 6;
   this.cubePerimetr = this.height * 12;

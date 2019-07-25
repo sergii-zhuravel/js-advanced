@@ -50,11 +50,11 @@
         var todo = document.getElementById("todo-input");
         console.log("todo-input: ", todo);
 
-        var todoValue = todo.hasAttribute("value");
+        var todoValue = todo.hasAttribute("value");  //!!! вернет тру или фолс но не велью
         console.log("todoValue: ", todoValue);
 
-        var todoValue = todo.getAttribute("value");
-        console.log("todoValue - value: ", todoValue);
+        var todoValue = todo.getAttribute("value"); //!!! вернет значение атрибута, оно может отличаться от чекущего значения
+        console.log("todoValue - value: ", todoValue);  //!!! Правильно так - todo.value
 
         //  2. Найдет элемент li
         var todoLi = document.getElementsByTagName("li")[0];
