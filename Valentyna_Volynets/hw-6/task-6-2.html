@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    ------------------------
+    Задача 6.2
+    ------------------------
+    Дано:
+    HTML страница в которой есть только такой код
+
+    <div id="test" style="height: 50px;background-color: lightblue;">Test Div</div>
+    <p>Расчетные стили для test div: <br><span id="output"></span></p>
+
+    <script>
+    function myFunction(){
+        var elem = document.getElementById("test");
+        var txt;
+        cssObj = window.getComputedStyle(elem)
+
+        for (i = 0; i < cssObj.length; i++) {
+            cssObjProp = cssObj.item(i)
+            txt += cssObjProp + " = " + cssObj.getPropertyValue(cssObjProp) + "<br>";
+        }
+        document.getElementById("output").innerHTML = txt;
+    }
+    </script>
+
+    Вопрос:
+    Как получить расчетный стиль для фонового цвета у дива с id="test"?
+    -->
+
+    <div id="test" style="height: 50px;background-color: lightblue;">
+        Test Div
+    </div>
+    <p>Расчетные стили для test div: <br /><span id="output"></span></p>
+
+    <script>
+        function myFunction() {
+            var elem = document.getElementById("test");
+            var txt;
+            cssObj = window.getComputedStyle(elem);
+
+            for (i = 0; i < cssObj.length; i++) {
+                cssObjProp = cssObj.item(i);
+                txt +=
+                    cssObjProp + " = " + cssObj.getPropertyValue(cssObjProp) + "<br>";
+            }
+            document.getElementById("output").innerHTML = txt;
+        }
+
+        var styleDiv = myFunction(document.body.firstElementChild);
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 
+    ------------------------
+    Задача 6.3
+    ------------------------
+
+    Создать UIComponent ES6 Class
+
+    Конструктор класса принимает - имя єлемента (имя тега) и сохраняет его в поле класса
+
+    (можно добавить параметрьі - атрибутьі и контент)
+    Добавить методьі:
+    - setAttribute() -  добавляет в поле (массив) attributes обьект типа {name: 'id', value: 1}
+    - setContent() - добавляет в поле content текстовьій контент (строку)
+
+    Метод render(parent) - принимает HTML єлемент в которьій вьіводит созданньій єлемент
+    (єлемент нужно создать используя имя єлемента, атрибутьі  и текстовьій контент).
+
+    Создать класс Button которьій расширяет класс UIComponent и добавляет Метод
+
+    clickMe() {
+    console.log("I'm clicked")
+    }
+
+    -------------
+    Для тестирования классов:
+    создать єкземпляр класса  Button и вьізвать у него методьі render и clickMe
+    -->
+
+    <style>
+        .circleBtn {
+            margin: 20px auto;
+            color: white;
+            width: 100px;
+            height: 30px;
+            border-radius: 50px;
+            background: red;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            box-shadow: 0 0 0 1px rgba(92, 3, 3, 0.5);
+            text-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5)
+        }
+        .circleBtn:hover {
+            background: rgb(173, 8, 8);
+        }
+    
+        .circleBtnGreen {
+            background: rgb(1, 155, 1);
+            box-shadow: 0 0 0 1px rgba(1, 41, 1, 0.5);
+        }
+        .circleBtnGreen:hover {
+            background: rgba(4, 104, 4);
+        }
+
+        .circleBtnBlue {
+            background: rgb(22, 145, 245);
+            box-shadow: 0 0 0 1px rgb(22, 37, 245, 0.5)
+        }
+        .circleBtnBlue:hover {
+            background:  rgb(22, 74, 245);
+            transform: scale(1.2);
+        }
+
+    </style>
+
+    <script>
+        class UIComponent {
+            constructor(tagName) {
+                this.tagName = tagName;
+                this.attributes = [];
+                this.textContent = '';
+            }
+            setAttribute = function(attribute) {
+                 this.attributes.push(attribute);
+            }
+            setContent = function(content) {
+                this.textContent = content;
+            }
+            render = function(parent) {
+                var newElem = document.createElement(this.tagName);
+                newElem.textContent = this.textContent;
+                for (var i = 0; i < this.attributes.length; i++) {
+                    newElem.setAttribute(this.attributes[i].name, this.attributes[i].value)
+                }
+                parent.appendChild(newElem);
+            }
+        }
+
+        var circleBtnRed = new UIComponent('div');
+        circleBtnRed.setAttribute({name: 'class', value: 'circleBtn'});
+        circleBtnRed.setAttribute({name: 'id', value: 'redCircle'});
+        // circleBtnRed.setAttribute({name: 'style', value: 'color:green;font-size:20px;'}); // можно задавать свойства здесь.
+        circleBtnRed.setContent('Click me!');
+        circleBtnRed.render(document.body);
+
+    // *****************************************
+
+        class Button extends UIComponent {
+            super(name) {
+                this.name = name;
+            }
+            clickMe() {
+                console.log("I'm clicked");
+            }
+        }
+        
+        var circleBtnGreen = new Button('div');
+        circleBtnGreen.setAttribute({name: 'class', value: 'circleBtn circleBtnGreen'});
+        circleBtnGreen.setAttribute({name: 'id', value: 'greenCircle'});
+        circleBtnGreen.setContent('Click on me!');
+        circleBtnGreen.render(document.body);
+        circleBtnGreen.clickMe();
+
+    // ***
+
+        var circleBtnBlue = new Button('div');
+        circleBtnBlue.setAttribute({name: 'class', value: 'circleBtn circleBtnBlue'});
+        circleBtnBlue.setAttribute({name: 'id', value: 'blueCircle'});
+        circleBtnBlue.setAttribute({name: 'onclick', value: 'clickOnBtn()'})
+        circleBtnBlue.setContent('Click!!!');
+        circleBtnBlue.render(document.body);
+
+        function clickOnBtn() {
+            console.log("Yes! I'm clicked!")
+        }
+    </script>
+
+</body>
+</html>

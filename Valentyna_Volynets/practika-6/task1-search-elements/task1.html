@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="task1.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="background">
+      <!-- Main background -->
+
+      <div id="result"></div>
+
+      <div id="main">
+        <div id="first-rows">
+          <button class="del-bg" id="delete">Del</button>
+          <button value="%" class="btn-style operator opera-bg fall-back">
+            %
+          </button>
+          <button value="+" class="btn-style opera-bg value align operator">
+            +
+          </button>
+        </div>
+
+        <div class="rows">
+          <button value="7" class="btn-style num-bg num first-child">7</button>
+          <button value="8" class="btn-style num-bg num">8</button>
+          <button value="9" class="btn-style num-bg num">9</button>
+          <button value="-" class="btn-style opera-bg operator">-</button>
+        </div>
+
+        <div class="rows">
+          <button value="4" class="btn-style num-bg num first-child">4</button>
+          <button value="5" class="btn-style num-bg num">5</button>
+          <button value="6" class="btn-style num-bg num">6</button>
+          <button value="*" class="btn-style opera-bg operator">x</button>
+        </div>
+
+        <div class="rows">
+          <button value="1" class="btn-style num-bg num first-child">1</button>
+          <button value="2" class="btn-style num-bg num">2</button>
+          <button value="3" class="btn-style num-bg num">3</button>
+          <button value="/" class="btn-style opera-bg operator">/</button>
+        </div>
+
+        <div class="rows">
+          <button value="0" class="num-bg zero" id="delete">0</button>
+          <button value="." class="btn-style num-bg period fall-back">.</button>
+          <button value="=" id="eqn-bg" class="eqn align">=</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 
+    В папке task1-search-elements находится HTML файл с разметкой для программьі калькулятор.
+
+    Необходимо написать JS код которьій вьіполнит следующие условия:
+
+    1. Найти все элементы с CSS классом btn-style и задать им зеленый цвет фона
+    2. Найти элемент с айди background
+    3. Найди Del кнопку
+    4. Найти все кнопки 
+    -->
+
+    <script>
+
+      // 1. Найти все элементы с CSS классом btn-style и задать им зеленый цвет фона
+
+      var btns = document.querySelectorAll('.btn-style');
+      // var btn = document.getElementsByClassName("btn-style");  // 2 way!
+      console.log("btns; ", btns);
+
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].style.backgroundColor="green";
+      };
+      // 2 way!
+      btns.forEach(function(button) {
+        button.style.backgroundColor = "red";
+      });
+
+      // 2. Найти элемент с айди background
+      var idBg = document.getElementById('background');
+      console.log('idBg: ', idBg);
+
+      // 3. Найди Del кнопку
+      var btnDel = document.getElementById('delete');
+      console.log('btnDel:', btnDel)
+
+      // 4. Найти все кнопки 
+      var allButtons = document.querySelectorAll('button');
+      console.log('allButtons: ', allButtons);
+      
+    </script>
+  </body>
+</html>

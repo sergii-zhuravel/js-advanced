@@ -95,11 +95,11 @@
                 </div>
             </div>
             <div class="math">
-                <input type="button" name="button" value="+" class="btn"/>
-                <input type="button" name="button" value="-" class="btn"/>
-                <input type="button" name="button" value="*" class="btn"/>
-                <input type="button" name="button" value="/" class="btn"/>
-                <input type="button" name="button" value="=" class="btn"/>
+                <input onclick="plusBtnClick()" type="button" name="button" value="+" class="btn"/>
+                <input onclick="minusBtnClick()" type="button" name="button" value="-" class="btn"/>
+                <input onclick="multBtnClick()" type="button" name="button" value="*" class="btn"/>
+                <input onclick="divBtnClick()" type="button" name="button" value="/" class="btn"/>
+                <!-- <input type="button" name="button" value="=" class="btn"/> -->
             </div>
             <div class="result">
                 <span>result=</span>
@@ -108,7 +108,35 @@
         </form>
     </div>
 
-    <script>   
+    <script>  
+        function plusBtnClick() {
+            var op1 = document.querySelector('[name=x1]');
+            var op2 = document.querySelector('[name=x2]');
+            console.log(+op1.value + +op2.value);
+            var result = document.getElementsByName('result')[0];
+            result.value = +op1.value + +op2.value;
+        }
+        function minusBtnClick() {
+            var op1 = document.querySelector('[name=x1]');
+            var op2 = document.querySelector('[name=x2]');
+            console.log(+op1.value - +op2.value);
+            var result = document.getElementsByName('result')[0];
+            result.value = +op1.value - +op2.value;
+        }
+        function multBtnClick() {
+            var op1 = document.querySelector('[name=x1]');
+            var op2 = document.querySelector('[name=x2]');
+            console.log(+op1.value * +op2.value);
+            var result = document.getElementsByName('result')[0];
+            result.value = +op1.value * +op2.value;
+        }
+        function divBtnClick() {
+            var op1 = document.querySelector('[name=x1]');
+            var op2 = document.querySelector('[name=x2]');
+            console.log(+op1.value / +op2.value);
+            var result = document.getElementsByName('result')[0];
+            result.value = +op1.value / +op2.value;
+        }
     </script>
 </body>
 </html>

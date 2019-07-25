@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    ------------------------
+    Задача 6.1
+    ------------------------
+    Дано:
+    HTML страница в которой есть только такой код
+    <div>
+        <input id="todo-input" value="Placeholder" /> <button id="button-add">Add</button>
+        <p>ToDo List:</p>
+        <ol id="todo-list">
+            <li class="todo-item">
+                First todo
+                <span class="delete-button" onclick="removeItem(event)" title="Delete current item">x</span>
+            </li>
+        </ol>
+    </div>
+
+    Написать JavaScript код, который:
+    1. Найдет todo-input и получит значение введенное в поле
+    2. Найдет элемент li
+    3. Создаст deep клон элемента li
+    4. Поменять только текст у клона элемента li
+    -->
+
+    <div>
+        <input id="todo-input" value="Placeholder" />
+        <button id="button-add">Add</button>
+        <p>ToDo List:</p>
+        <ol id="todo-list">
+            <li class="todo-item">
+                First todo
+                <span class="delete-button" onclick="removeItem(event)" title="Delete current item">x</span>
+            </li>
+        </ol>
+    </div>
+
+    <script>
+        // 1. Найдет todo-input и получит значение введенное в поле
+        var todo = document.getElementById("todo-input");
+        console.log("todo-input: ", todo);
+
+        var todoValue = todo.hasAttribute("value");
+        console.log("todoValue: ", todoValue);
+
+        var todoValue = todo.getAttribute("value");
+        console.log("todoValue - value: ", todoValue);
+
+        //  2. Найдет элемент li
+        var todoLi = document.getElementsByTagName("li")[0];
+        console.log("todoLi: ", todoLi);
+
+        //  3. Создаст deep клон элемента li
+        var cloneLi = todoLi.cloneNode(true);
+        console.log("cloneLi", cloneLi);
+
+        // 4. Поменять только текст у клона элемента li
+        cloneLi.innerHTML = "Second todo";
+        // cloneLi.firstElementChild.innerHTML = 'xx';
+
+        console.log("cloneLi", cloneLi);
+
+        // 5. insert
+        todoLi.insertBefore(cloneLi, null);
+    </script>
+</body>
+
+</html>
