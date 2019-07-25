@@ -39,16 +39,21 @@ setContent(text){
 }
 render(elem){
     let newElem = document.createElement(this.name);
+    console.log(newElem);
     // this.attributes.forEach(function(item, i, arr) {
     //     console.log( i + ": " + item + " (массив:" + arr + ")" );
     //   });
     this.attributes.forEach(attr => {
         newElem.setAttribute(attr.name, attr.value)
-    })
+    })  
+    
     let node = document.createTextNode(this.content)
     let parentElem = document.getElementsByTagName(elem)[0];
-    parentElem.appendChild(node);
-   return newElem;
+    newElem.appendChild(node)
+    parentElem.appendChild(newElem);
+    console.log('new');
+    
+//    return newElem; //не  обязательно 
 
 }
 }
