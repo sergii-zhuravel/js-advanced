@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">
+    </div>
+    <div id="main">
+    </div>
+    <div id="footer">
+    </div>
+<script>
+/* ------------------------
+Задача 6.3
+------------------------
+
+Создать UIComponent ES6 Class
+
+Конструктор класса принимает - имя єлемента (имя тега) и сохраняет его в поле класса
+
+(можно добавить параметрьі - атрибутьі и контент)
+Добавить методьі:
+ - setAttribute() -  добавляет в поле (массив) attributes обьект типа {name: 'id', value: 1}
+ - setContent() - добавляет в поле content текстовьій контент (строку)
+
+Метод render(parent) - принимает HTML єлемент в которьій вьіводит созданньій єлемент
+(єлемент нужно создать используя имя єлемента, атрибутьі  и текстовьій контент).
+
+
+Создать класс Button которьій расширяет класс UIComponent и добавляет Метод
+
+clickMe() {
+  console.log("I'm clicked")
+}
+
+-------------
+Для тестирования классов:
+создать єкземпляр класса  Button и вьізвать у него методьі render и clickMe */
+
+class UIComponent {
+    constructor (name) {
+        this.name = name,
+        this.attributes = [],
+        this.content = ''
+    }
+
+    setAttributes (name, value) {
+        this.attributes.push({name, value});
+    }
+
+    setContent (content) {
+        this.content = content;
+    }
+
+    render (elem) {
+        let childElem = document.createElement(this.name)
+        console.log(this.attributes);
+        for (let i = 0; i < this.attributes.length; i++) {
+            childElem.setAttribute(this.attributes[i].name, this.attributes[i].value);
+        }
+        childElem.innerHTML = this.content;
+        elem.appendChild(childElem);
+        return elem;
+    }
+}
+
+class Button extends UIComponent {
+    constructor (name) {
+        super(name);
+    }
+
+    clickMe() {
+        console.log("I'm clicked");
+    }
+}
+
+let parrentNode = document.getElementById('main');
+
+let button = new Button('button');
+button.setAttributes("type", "submit");
+button.setAttributes('onclick', 'button.clickMe()');
+button.setContent('My btn');
+button.render(parrentNode);
+console.log(button);
+
+
+</script>
+</body>
+</html>

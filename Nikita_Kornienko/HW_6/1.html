@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input id="todo-input" value="Placeholder" /> <button id="button-add">Add</button>
+        <p>ToDo List:</p>
+        <ol id="todo-list">
+            <li class="todo-item">
+                First todo
+                <span class="delete-button" onclick="removeItem(event)" title="Delete current item">x</span>
+            </li>
+        </ol>
+    </div>
+
+    <script>
+/*         Написать JavaScript код, который:
+    1. Найдет todo-input и получит значение введенное в поле
+    2. Найдет элемент li
+    3. Создаст deep клон элемента li
+    4. Поменять только текст у клона элемента li */
+
+    // Находит todo-input и получает значение, введенное в поле
+
+    let inputData = document.getElementById('todo-input').value;
+    console.log(inputData);
+
+    // Получает li
+
+    let listItem = document.getElementsByTagName('li')[0];
+    console.log(listItem.textContent);
+
+    // Создает клон со всем содержимым - deep clone
+
+    let inputDataClone = listItem.cloneNode(true);
+    
+    // Меняет содержимое только внутри клона
+
+    inputDataClone.textContent = "Second Task";
+    console.log(inputDataClone);
+    console.log(listItem);
+
+    document.querySelector('.todo-item').appendChild(inputDataClone);
+
+
+
+    </script>
+</body>
+</html>
