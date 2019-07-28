@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    ------------------------
+    Задача 7.2
+    ------------------------
+    Дано:
+    HTML страница home_assignment.html в которой есть JavaScript код
+
+    Необходимо выполнить задания которые описаны в коде в виде комментариев, а именно:
+    1. Дописать функцию addItem
+    2. Написать реализацию функции removeItem
+    3. Выполнить весь код при событии DOMContentLoaded
+
+    Вопрос: Почему функция addItem которая клонирует существующие элемент li работает даже если удалить все ToDo элементы?
+
+       // -----делегирование событий - "даже если удалить все ToDo элементы" сщ страницы браузера - останется html-код <div>, с которого создается полный клон всего узла /cloneNode(true);/
+     -->
+
+    <div>
+      <input id="todo-input" value="" /> <button id="button-add">Add</button>
+      <p>ToDo List:</p>
+      <ol id="todo-list">
+        <li class="todo-item">
+          First todo
+          <span
+            class="delete-button"
+            onclick="removeItem(event)"
+            title="Delete current item"
+            >x</span
+          >
+        </li>
+      </ol>
+    </div>
+    <script>
+      var btn = document.getElementById("button-add");
+      var todoItemTemplate = document.getElementById("todo-list").firstElementChild;
+
+      btn.onclick = addItem;
+
+      function addItem() {
+        var input = document.getElementById("todo-input");
+        var newItem = todoItemTemplate.cloneNode(true);
+        newItem.firstChild.textContent = input.value;
+        // добавить новый элемент в todo-list
+        // ... ваш код тут
+        document.getElementById("todo-list").insertBefore(newItem, null);
+        // или 2й вариант:
+        // document.getElementById('todo-list').appendChild(newItem);   
+
+        input.value = "";
+      }
+
+      function removeItem(e) {
+        // используя переданный объект Event
+        // удалить весь тег li который является родительским
+        // для кнопки на которой выполнили клик
+        // ... ваш код тут
+        var deleteItem = e.target;
+        // console.log('deleteItem: ', deleteItem);
+        console.log('deleteItem.textContent: ', deleteItem.parentElement.textContent);
+        deleteItem.parentElement.remove();
+      }
+    </script>
+    <style>
+      .delete-button {
+        padding-left: 5px;
+        color: red;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </body>
+</html>
