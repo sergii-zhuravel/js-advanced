@@ -13,7 +13,7 @@
         <ol id="todo-list">
             <li class="todo-item">
                 First todo
-                <span class="delete-button" onclick="DOMChanges(event)(event)" title="Delete current item">x</span>
+                <span class="delete-button" onclick="removeItem" title="Delete current item">x</span>
             </li>
         </ol>
     </div>
@@ -59,6 +59,10 @@ function DOMChanges (event) {
             
             event.target.parentNode.parentNode.remove();
         }
+
+        // Удаление последнего элемента методом removeItem не приводит к прекращению работы addItem
+        // так как функция addItem клонирует элемент, который содержится в переменной todoItemTemplate,
+        // содержимое этой переменной уделнным не будет и с ним можно будет продолжить работу.
 }
     </script>
     <style>
