@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Вопрос:
+        1. В каком порядке выведется текст?
+        2. Есть ли в коде ошибки? Если да, то какие? */
+
+      //  document.addEventListener("DOMContentLoaded", myFunction()); // не нужен вызов функции
+        document.addEventListener("DOMContentLoaded", myFunction);
+        function myFunction() {
+            console.log('Hello from My Function'); // Этот код выведется позже, так как выполняется
+                                                    // поле того, как Execution stack будет пуст
+        }
+        console.log('Hello from main JS code'); // Этот код выполняется раньше
+    </script>
+</body>
+</html>
