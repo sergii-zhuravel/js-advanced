@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+       function myFunction()
+       {
+          console.log('Hello from My Function');
+       }
+       document.addEventListener("DOMContentLoaded", myFunction());
+       console.log('Hello from main JS code'); 
+       
+       //1. першим виведеться "Hello from My Function"; myFunction() викликається на етапі, коли всю сторінку провантажено; 
+       //потім "Hello from main JS code"
+       //2. в обробнику події не потрібно до myFunction звертатися з дужками (). правильно document.addEventListener("DOMContentLoaded", myFunction);
+       //тоді текст виведеться в іншому порядку (що є вірним, так як DOMContentLoaded має зачекати виконання внутрішні скріптів)
+    </script>
+</body>
+</html>
