@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!--
+    ------------------------
+    Задача 7.1
+    ------------------------
+    Есть JavaScript код
+    <script>
+    document.addEventListener("DOMContentLoaded", myFunction());
+    function myFunction() {
+        console.log('Hello from My Function');
+    }
+    console.log('Hello from main JS code');
+    </script>
+
+    Вопрос:
+    1. В каком порядке выведется текст?
+        ---- вначале выполняется myFunction, а потом /console.log('Hello from main JS code');/ так как  myFunction вызывается раньше console.log, хотя может описываться ниже.
+
+    2. Есть ли в коде ошибки? Если да, то какие?
+        ------ не надо addEventListener привязывать к загрузке страницы DOMContentLoaded, событие DOMContentLoaded обязательное, а addEventListener назначает дополнительные события. 
+    -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", myFunction());
+
+      console.log("Hello from main JS code");
+
+      function myFunction() {
+        console.log("Hello from My Function");
+      }
+
+      // var timer = setTimeout(myFunction, 3000); - если задать задержку события - будет второй "привет" myFunction.
+    </script>
+  </body>
+</html>
