@@ -7,16 +7,32 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id = "firstField"><br>
+    <input type="text" id="firstField"><br>
     <input type="text" id = "secondField"><br>
 
     <select id = "mathOperator"> 
-    <option value = "+">+</option>
-    <option value = "-">-</option>
-    <option value = "*">X</option>
-    <option value = "/">/</option>
+        <option value = "+">+</option>
+        <option value = "-">-</option>
+        <option value = "*">X</option>
+        <option value = "/">/</option>
     </select>
-    <button onclick = "calc();">Calculate!</button>
+    <button onclick = "">Calculate!</button>
     <input type="text" id = "calculationResult">
+
+
+    <script>
+    // let firstFieldInput = document.getElementById('firstField').value;
+    // let secondFieldInput = document.getElementById('secondField').value;
+    let operator;
+    
+    document.getElementById("mathOperator").onchange = function () {
+    let firstFieldInput = document.getElementById('firstField').value;
+    let secondFieldInput = document.getElementById('secondField').value;
+    operator = this.options[this.selectedIndex].getAttribute("value");
+    console.log(eval(firstFieldInput + operator + secondFieldInput));
+    };
+
+    
+    </script>
 </body>
 </html>
