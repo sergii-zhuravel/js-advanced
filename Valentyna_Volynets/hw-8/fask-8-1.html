@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cookie</title>
+  </head>
+  <body>
+    <!-- 
+    ------------------------
+    Задача 8.1
+    ------------------------
+    Написать простую реализацию авторизацию с использованием document.cookie
+    Например авторизационную куки можно назвать loginName
+
+    При первом посещении страницьі если куки loginName еще нет, то показьіваем поле ввода (input) c сообщением - Ведите имя
+
+    Если куки loginName уже существует и в нем есть значение - показьіваем приветствие
+    -- Добро пожаловать на наш сайт (значение из loginName) --
+    и показьіваем кнопку - Log out, при нажатии на которую нужно:
+    1. Удалить куки loginName (учили на занятии как и написали функцию)
+    2. Перезагрузить страницу  (js код - location.reload(); )
+    -->
+
+    <style>
+      .btn {
+        display: block;
+        margin: 20px;
+        width: 100px;
+        height: 30px;
+        border-radius: 50px;
+        background: red;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        box-shadow: 0 0 0 1px rgba(92, 3, 3, 0.5);
+        text-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+        margin-left: auto;
+      }
+
+      .loginForm {
+        display: none;
+        align-content: center;
+        width: 250px;
+        height: 100px;
+        background: rgb(143, 142, 142);
+        position: absolute;
+        padding: 30px;
+        margin: 0px auto;
+        left: 50%;
+        transform: translate(-50%);
+      }
+
+      .greetingForm {
+        display: none;
+        align-content: center;
+        width: 250px;
+        height: 100px;
+        background: rgb(226, 173, 173);
+        position: absolute;
+        padding: 30px;
+        margin: 0px auto;
+        left: 50%;
+        transform: translate(-50%);
+        text-align: center;
+      }
+
+      #closeGreeting {
+        margin: 20px;
+        font-weight: 900;
+        color: #fff;
+        text-align: end;
+        position: absolute;
+        top: 0px;
+        right: 0;
+        cursor: pointer;
+      }
+    </style>
+
+    <!-- --------- loginForm --------- -->
+    <div class="loginForm">
+      <p>Input your login</p>
+      <input id="loginInput" value="" placeholder="your login" />
+      <button id="buttonEnter" onclick="addItem()">Enter</button>
+    </div>
+    <!-- -------- greetingForm ------- -->
+    <div class="greetingForm">
+      <p id="closeGreeting" onclick="closeGreetingForm()">x</p>
+      <p>Добро пожаловать на наш сайт,</p>
+      <p><span id="idGreeting"></span>!</p>
+    </div>
+
+    <script>
+      // ------------ button ---------------------
+      class Button {
+        constructor(tagName) {
+          this.tagName = tagName;
+          this.attributes = [];
+          this.textContent = "";
+        }
+        setAttribute = function(attribute) {
+          this.attributes.push(attribute);
+        };
+        setContent = function(content) {
+          this.textContent = content;
+        };
+        render = function(parent) {
+          var newElem = document.createElement(this.tagName);
+          newElem.textContent = this.textContent;
+          for (var i = 0; i < this.attributes.length; i++) {
+            newElem.setAttribute(
+              this.attributes[i].name,
+              this.attributes[i].value
+            );
+          }
+          parent.appendChild(newElem);
+        };
+      }
+
+      //  ---------------log out------------------------
+      var logOutBtn = new Button("div");
+      logOutBtn.setAttribute({ name: "class", value: "btn " });
+      logOutBtn.setAttribute({ name: "id", value: "logOut" });
+      logOutBtn.setAttribute({ name: "onclick", value: "clickLogOutBtn()" });
+      logOutBtn.setContent("Log Out!");
+      logOutBtn.render(document.body);
+
+      function clickLogOutBtn() {
+        var logOutButton = document.getElementById("logOut");
+        logOutButton.style.display = "none";
+        deleteCookie(-1000);
+        console.log("I'm clicked logOutBtn!");
+        location.reload();
+      } // 
+
+      // -------------- choice ---------
+      var loginName = getCookie("loginName");
+      console.log("cookie", loginName);
+      if (loginName && loginName.length > 0) {
+        var greetingStyle = document.getElementsByClassName("greetingForm")[0];
+        greetingStyle.style.display = "block";
+
+        var logOutButton = document.getElementById("logOut");
+        logOutButton.style.display = "block";
+
+        var greetingName = document.getElementById("idGreeting");
+        greetingName.innerHTML = loginName;
+        console.log("greetingName", loginName);
+
+      } else {
+        var formStyle = document.getElementsByClassName("loginForm")[0];
+        formStyle.style.display = "block";
+
+        logOutButton = document.getElementById("logOut");
+        logOutButton.style.display = "none";
+      }
+      function closeGreetingForm() {
+        greetingStyle.style.display = "";
+      } // 
+
+      // ------------------ getCookie -------------
+      function getCookie(cookieName) {
+        var cookie = document.cookie;
+        var cookieArray = cookie.split(";");
+        for (var i = 0; i < cookieArray.length; i++) {
+          var keyValueArray = cookieArray[i].split("=");
+          if (keyValueArray[0].trim() == cookieName) {
+            return keyValueArray[1];
+          }
+        }
+      } // 
+
+      // ----------------- setCookie ------------------
+      function setCookie(key, value, expires) {
+        var date = new Date();
+        date.setTime(date.getTime() + expires * 24 * 60 * 60 * 1000);
+        document.cookie =
+          key + "=" + value + ";path=/;expires=" + date.toUTCString();
+      } // 
+
+      // -----------------input login -------------
+      var enterBtn = document.getElementById("buttonEnter"); // Enter
+
+      function addItem() {
+        var inputValue = document.getElementById("loginInput"); // loginName
+        loginName = inputValue.value;
+        console.log("loginName: ", loginName);
+        setCookie("loginName", loginName, 3);
+
+        formStyle = document.getElementsByClassName("loginForm")[0];
+        formStyle.style.display = "";
+
+        var logOutButton = document.getElementById("logOut");
+        logOutButton.style.display = "block";
+        location.reload();
+      } // 
+
+      // ------------------ deleteCookie ---------------
+      function deleteCookie(age) {
+        setCookie("loginName", loginName, -1);
+      } // 
+    </script>
+  </body>
+</html>
