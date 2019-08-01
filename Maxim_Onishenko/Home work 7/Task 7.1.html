@@ -1,0 +1,77 @@
+<!-- 
+------------------------
+Задача 7.1
+------------------------
+Есть JavaScript код
+<script>
+  document.addEventListener("DOMContentLoaded", myFunction());
+  function myFunction() {
+    console.log('Hello from My Function');
+  }
+  console.log('Hello from main JS code');
+</script>
+
+Вопрос:
+1. В каком порядке выведется текст?
+2. Есть ли в коде ошибки? Если да, то какие?
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: rgb(30, 30, 30);
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+      }
+      a {
+        color: purple;
+      }
+      code {
+        line-height: 3;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>1. В каком порядке выведется текст?</h2>
+    <p>"Hello from My Function" , "Hello from main JS code"</p>
+    <h4>
+      Из
+      <a
+        href="https://stackoverflow.com/questions/2414750/difference-between-domcontentloaded-and-load-events"
+        >StackOverflow</a
+      >:
+    </h4>
+    <p>
+      "The DOMContentLoaded event is fired when the document has been
+      completely<br />
+      loaded and parsed, without waiting for stylesheets, images, and
+      subframes<br />
+      to finish loading (the load event can be used to detect a fully-loaded<br />
+      page)."
+    </p>
+
+    <h2>2. Есть ли в коде ошибки? Если да, то какие?</h2>
+    <p>
+      addEventListener не принимает функцию как ссылку, а выпаолняет ее во время
+      своего создания. <br />Нужно написать: <br />
+      <code>document.addEventListener("DOMContentLoaded", myFunction());</code>
+      <br />И тогда эта строка действительно будет добавлять EventListener;
+    </p>
+    <script>
+      document.addEventListener("DOMContentLoaded", myFunction());
+      function myFunction() {
+        console.log("Hello from My Function");
+      }
+
+      // for( let i = 0; i < 1000000000; i++){}
+      console.log("Hello from main JS code");
+    </script>
+  </body>
+</html>
