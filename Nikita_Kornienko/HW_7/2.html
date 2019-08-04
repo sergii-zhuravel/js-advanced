@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div>
-        <input id="todo-input" value="" /> <button id="button-add">Add</button>
-        <p>ToDo List:</p>
-        <ol id="todo-list">
-            <li class="todo-item">
-                First todo
-                <span class="delete-button" onclick="removeItem" title="Delete current item">x</span>
-            </li>
-        </ol>
+      <input id="todo-input" value="" /> <button id="button-add">Add</button>
+      <p>ToDo List:</p>
+      <ol id="todo-list">
+        <li class="todo-item">
+          First todo
+          <span
+            class="delete-button"
+            onclick="removeItem"
+            title="Delete current item"
+            >x</span
+          >
+        </li>
+      </ol>
     </div>
     <script>
-
-/*         Дано:
+      /*         Дано:
 HTML страница home_assignment.html в которой есть JavaScript код
 
 Необходимо выполнить задания которые описаны в коде в виде комментариев, а именно:
@@ -31,48 +35,49 @@ HTML страница home_assignment.html в которой есть JavaScript
 все ToDo элементы?
 
 Вопрос */
-document.addEventListener("DOMContentLoaded", DOMChanges);
+      document.addEventListener("DOMContentLoaded", DOMChanges);
 
-function DOMChanges (event) {
-    var btn = document.getElementById('button-add');
-        var todoItemTemplate = document.getElementById('todo-list').firstElementChild;
+      function DOMChanges(event) {
+        var btn = document.getElementById("button-add");
+        var todoItemTemplate = document.getElementById("todo-list")
+          .firstElementChild;
 
         btn.onclick = addItem;
 
         function addItem() {
-            var input = document.getElementById('todo-input');
-            var newItem = todoItemTemplate.cloneNode(true);
-            newItem.firstChild.textContent = input.value;
-            // добавить новый элемент в todo-list
-            todoItemTemplate.insertAdjacentElement('afterend', newItem);
-            todoItemTemplate = newItem;
+          var input = document.getElementById("todo-input");
+          var newItem = todoItemTemplate.cloneNode(true);
+          newItem.firstChild.textContent = input.value;
+          // добавить новый элемент в todo-list
+          todoItemTemplate.insertAdjacentElement("afterend", newItem);
+          todoItemTemplate = newItem;
         }
 
-/*         if(event) {
+        /*         if(event) {
             removeItem(event)
         } */
 
         return function removeItem(event) {
-            // используя переданный объект Event
-            // удалить весь тег li который является родительским
-            // для кнопки на которой выполнили клик
-            
-            event.target.parentNode.parentNode.remove();
-        }
+          // используя переданный объект Event
+          // удалить весь тег li который является родительским
+          // для кнопки на которой выполнили клик
+
+          event.target.parentNode.parentNode.remove();
+        };
 
         // Удаление последнего элемента методом removeItem не приводит к прекращению работы addItem
         // так как функция addItem клонирует элемент, который содержится в переменной todoItemTemplate,
         // содержимое этой переменной уделнным не будет и с ним можно будет продолжить работу.
-}
+      }
     </script>
     <style>
-        .delete-button{
-            padding-left: 5px;
-            color: red;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
+      .delete-button {
+        padding-left: 5px;
+        color: red;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+      }
     </style>
-</body>
+  </body>
 </html>

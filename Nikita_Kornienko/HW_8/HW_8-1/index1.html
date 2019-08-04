@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HW_8</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <span>Please input your username and password.</span>
+            <input type="text" name="name" id="inputName">
+            <label for="name">Username</label>
+            <input type="password" name="password" id="inputPassword">
+            <label for="email">Password</label>
+            <button id="submitBtn">Submit</button>
+        </div>
+        <div class="greeting">
+            <p>Greetings on our website <span id="username"></span></p>
+            <button id="logout">Log out</button>
+        </div>
+    </div>
+    <script>
+/*     Написать простую реализацию авторизацию с использованием document.cookie
+Например авторизационную куки можно назвать loginName
+
+При первом посещении страницьі если куки loginName еще нет, то показьіваем поле ввода (input) c сообщением - Ведите имя
+
+Если куки loginName уже существует и в нем есть значение - показьіваем приветствие
+-- Добро пожаловать на наш сайт (значение из loginName) --
+и показьіваем кнопку - Log out, при нажатии на которую нужно:
+1. Удалить куки loginName (учили на занятии как и написали функцию)
+2. Перезагрузить страницу  (js код - location.reload(); )
+     */
+
+    let authForm = document.getElementById('authForm');
+    let submitBtn = document.getElementById('submitBtn');
+    let myCookies = { };
+    let cookieString = '';
+    let expiresAttr = new Date (Date.now() + 60*1000*24).toString();
+    submitBtn.addEventListener('click', saveCookies);
+
+    function saveCookies(e) {
+        let inputName = document.getElementById('inputName').value;
+        let inputPassword = document.getElementById('inputPassword').value;
+        myCookies["user"] = inputName;
+        myCookies["password"] = inputPassword;
+        document.cookie = "user=John"; // обновляем только куки с именем 'user'
+        alert(document.cookie); // показываем все куки
+/*         for (var key in myCookies) {
+            cookieString = `${key}=${myCookies[key]};`;
+            document.cookie = encodeURIComponent(cookieString);
+            console.log(cookieString)
+        } */
+    }
+    
+
+    </script>
+</body>
+</html>
