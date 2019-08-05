@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <button id="fetchBtn" class="btn btn-success mt-4">Fetch!</button>
+
+      <div class="content mt-4" id="content"></div>
+    </div>
+    <script>
+      /*     ------------------------
+Задача 9.1
+------------------------
+Написать JavaScript  приложение, которое будет делать запрос на GitHub API и отображать полученную информацию на веб странице.
+
+URL для запроса - https://api.github.com/search/repositories?q=react+language:javascript&per_page=100
+
+Необходимо создать веб страницу на которой отображено поле для ввода поискового запроса и кнопка Поиск
+
+Необходимо по 10 найденньім записям отобразить следующую информацию:
+
+1) Картинку аватарки (с помощью avatar_url)
+2) Название репозитория (full_name)
+3) Описание (description)
+4) название репозитория должно бьіть ссьілкой на (html_url)
+
+План вьіполнения задания:
+1) Создать UI - поле для ввода поискового запроса и кнопка Поиск
+2) На кнопку поиск - добавить обработчик собьітия Click при котором:
+  а) формируем URL для запроса - простая конкатенация строк (частей URL и слова или фразьі из поля ввода )
+  б) делаем ГЕТ запрос по URL
+  в) обрабатьіваем полученньіе данньіе
+3) динамически сформировать список из 10  UI компонентов (что отобразить указано вьіше, данньіе - первьіе 10 записить из ответка которьій должен прийти на наш запрос на АПИ)
+ */
+
+      let fetchBtn = document.getElementById("fetchBtn");
+      let content = document.getElementById("content");
+
+      fetchBtn.addEventListener("click", getData);
+
+      let j = 10;
+
+      function getData() {
+        fetch(
+          "https://api.github.com/search/repositories?q=react+language:javascript&per_page=100"
+        )
+          .then(res => res.json())
+          .then(data => {
+            for (let i = 0; i < 10; i++) {
+              let card = `<div class="card mt-4" style="width: 18rem;">
+                            <img src="${
+                              data.items[i].owner["avatar_url"]
+                            }" class="card-img-top" alt="Avatar">
+                            <div class="card-body">
+                                <h5 class="card-title">                               
+                                 <a href="${
+                                   data.items[i].html_url
+                                 }" class="stretched link">${
+                data.items[i].full_name
+              }</a></h5>
+                                <p class="card-text">${
+                                  data.items[i].description
+                                }</p>
+
+                            </div>
+                        </div>`;
+              console.log(data);
+              content.innerHTML += card;
+
+            }
+          });
+      }
+    </script>
+  </body>
+</html>
