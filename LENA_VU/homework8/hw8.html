@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cookies</title>
+  </head>
+  <body>
+    <h1 class="inputHeader">type your Login</h1>
+    <input id="inputLogin" type="text" />
+    <div id="btn"></div>
+
+    <script>
+      document.addEventListener("DOMContentloaded", loginExists);
+
+      var logIn = document.createElement("button");
+      var logOut = document.createElement("button");
+      var loginText = document.createTextNode("Log in");
+      var logoutText = document.createTextNode("Log out");
+      logIn.appendChild(loginText);
+      logOut.appendChild(logoutText);
+      var input = document.getElementById("inputLogin");
+      var btnDiv = document.getElementById("btn");
+      //loginExists();
+
+
+      if (getCookie("loginName")) {
+        btnDiv.appendChild(logOut);
+        document.getElementsByClassName("inputHeader")[0].innerHTML =
+          "Click to Log Out";
+        input.remove();
+      } else {
+        btnDiv.appendChild(logIn);
+      }
+
+      var inputValue;
+      logIn.onclick = function() {
+        if (input.value.trim() != "") {
+          inputValue = input.value;
+        } else {
+          alert("Please type your login");
+          return false;
+        }
+
+        console.log(inputValue);
+        var login = inputValue;
+        document.cookie = "loginName=" + login;
+        input.value = null;
+        logIn.remove();
+        document.getElementsByClassName("inputHeader")[0].innerHTML =
+          "Click to Log Out";
+        input.remove();
+        btnDiv.appendChild(logOut);
+      };
+      logOut.onclick = function() {
+        logOut.remove();
+        btnDiv.appendChild(logIn);
+      };
+
+      logOut.onclick = function() {
+        var date = new Date();
+        date.setTime(date.getTime() + -1 * 24 * 60 * 60 * 1000);
+        document.cookie = "loginName=;expires=" + date.toUTCString();
+        +";path=/;"; // removing a cookie
+
+        location.reload();
+      };
+
+      function loginExists() {
+        if (getCookie("loginName")) {
+          alert("Добро пожаловать на наш сайт, " + getCookie("loginName"));
+        }
+      }
+
+      function getCookie(name) {
+        var semicolumnSplit = document.cookie.split(";");
+        var value;
+        semicolumnSplit.forEach(element => {
+          var keyValueArray = element.split("=");
+          if (keyValueArray[0].trim() === name) {
+            value = keyValueArray[1];
+          }
+        });
+        return value;
+      }
+    </script>
+  </body>
+</html>
