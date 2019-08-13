@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Search on GitHub</title>
+  </head>
+  <style>
+    .all_results {
+      text-align: center;
+      display: flex;
+
+      flex-wrap: wrap;
+    }
+    .result__container a {
+      text-decoration: none;
+      font-size: 30px;
+      color: black;
+
+      height: auto;
+    }
+    .result__container img {
+      width: 100%;
+      height: auto;
+    }
+    .result__container {
+      margin-bottom: 50px;
+      margin-right: 40px;
+      width: 200px;
+      height: auto;
+    }
+  </style>
+  <body>
+    <div class="search">
+      <div class="input_form">
+        <input id="input" type="text" />
+        <button class="seach_btn">Search</button>
+      </div>
+    </div>
+    <div class="result__container">
+      <img src="" alt="" />
+      <a href="#"></a>
+      <p></p>
+    </div>
+
+    <div class="all_results"></div>
+
+    <script>
+      var searchBtn = document.getElementsByClassName("seach_btn")[0];
+
+      var http = new XMLHttpRequest();
+      var responseData;
+
+      var result = document.querySelector(".result__container");
+
+      var resTemplte = result.cloneNode(true);
+
+      searchBtn.onclick = function() {
+        var searchDivChildren = document.getElementsByClassName("search")[0]
+          .children;
+
+        var inputValue = document.getElementById("input").value;
+        var url =
+          "https://api.github.com/search/repositories?q=" +
+          inputValue +
+          "+language:javascript&per_page=100";
+        http.open("GET", url);
+        http.send();
+
+        http.onreadystatechange = function() {
+          if (this.readyState === 4 && this.status === 200) {
+            responseData = JSON.parse(http.responseText)["items"];
+
+            console.log(responseData);
+          }
+
+          for (var i = 0; i < responseData.length; i++) {
+            var resTemplte = result.cloneNode(true);
+            resTemplte.children[0].setAttribute(
+              "src",
+              responseData[i].owner.avatar_url
+            );
+            resTemplte.children[1].setAttribute(
+              "href",
+              responseData[i].html_url
+            );
+            resTemplte.children[1].innerHTML = responseData[i].full_name;
+            resTemplte.children[2].innerHTML = responseData[i].description;
+            document
+              .getElementsByClassName("all_results")[0]
+              .appendChild(resTemplte);
+          }
+        };
+      };
+    </script>
+  </body>
+</html>
