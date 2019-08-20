@@ -1,0 +1,65 @@
+.container {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  height: 700px;
+  margin: 100px 100px;
+  /* height: 100vh; */
+}
+
+.block {
+  /* border: 1px solid black; */
+  margin: 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background: #eceff1;
+  padding: 10px;
+  display: grid
+  border: 3px salmon solid;
+}
+
+.blockHeader {
+  height: 50px;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 0;
+  background: #fff59d;
+  margin-bottom: 10px;
+}
+
+.delete{
+ 
+  float: right;
+  font-size: 2em;
+ 
+  color: red;
+}
+
+.toDoItem {
+  height: 100px;
+  /* position: relative; */
+  /* border: 1px solid red; */
+  border-radius: 10px;
+  background: #b3e5fc;
+  margin: 20px 0;
+  padding: 10px;
+  cursor: pointer;
+}
+.id {
+  margin: 10px 0;
+  font-size: 2em;
+  font-weight: bold;
+}
+.stateBlock{
+  height: 100%;
+}
+
+#addItem {
+  width: 20%;
+  min-height: 30px;
+  background: #ffab91;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
